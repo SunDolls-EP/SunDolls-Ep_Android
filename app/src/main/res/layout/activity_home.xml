@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="Home"
+            type="com.narsha.sundolls_ep_android.ui.viewmodel.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.activity.Home">
+
+        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/circularProgressBar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cpb_background_progressbar_color="#FFCDD2"
+            app:cpb_progress="50"
+            app:cpb_progressbar_color="#F44336"
+            app:cpb_progressbar_width="10dp"
+            app:cpb_secondary_progress="75"
+            app:cpb_start_angle="270"
+            app:cpb_sweep_angle="360"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
