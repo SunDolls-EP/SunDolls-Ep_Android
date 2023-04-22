@@ -10,11 +10,9 @@ import com.narsha.sundolls_ep_android.ui.viewmodel.HomeViewModel
 
 class Home : AppCompatActivity() {
     private val viewModel: HomeViewModel by lazy { ViewModelProvider(this)[HomeViewModel::class.java] }
-    private val binding = DataBindingUtil.setContentView<ActivityHomeBinding>(this, R.layout.activity_home)
+    private val binding by lazy { DataBindingUtil.setContentView<ActivityHomeBinding>(this, R.layout.activity_home) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-        binding.circularProgressBar.setProgressWithAnimation(65f, 1500) // 65% in 1500ms
-
+        binding.home = viewModel
     }
 }
