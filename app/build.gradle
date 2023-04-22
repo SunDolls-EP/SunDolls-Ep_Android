@@ -44,6 +44,9 @@ dependencies {
     //progressBar
     implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
 
+    //google OAuth
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
+
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
