@@ -14,6 +14,14 @@ class LoginOAuth : AppCompatActivity() {
     private val viewModel: LoginOAuthViewModel by lazy { ViewModelProvider(this)[LoginOAuthViewModel::class.java] }
     private val binding by lazy { DataBindingUtil.setContentView<ActivityLoginOauthBinding>(this, R.layout.activity_login_oauth) }
 
+    companion object {
+        private lateinit var instance: LoginOAuth
+
+        fun getInstance(): LoginOAuth {
+            return instance
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +37,7 @@ class LoginOAuth : AppCompatActivity() {
         super.onResume()
         viewModel.goHome.observe(this) {
             startActivity(Intent(this, Home::class.java))
+            finish()
         }
     }
 
