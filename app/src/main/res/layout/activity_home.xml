@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
         <variable
             name="Home"
@@ -11,6 +10,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.activity.Home">
@@ -31,19 +31,17 @@
 <!--        app:cpb_start_angle : 진행 막대의 시작 각도를 나타내는 변수입니다. 기본 값은 위쪽 방향인 0도입니다.-->
 <!--        app:cpb_progress_direction : 진행 막대의 진행 방향을 나타내는 변수입니다. 오른쪽에서 왼쪽 또는 왼쪽에서 오른쪽 중 하나의 값을 가질 수 있습니다.-->
 
-        <com.mikhaellopez.circularprogressbar.CircularProgressBar
-            android:id="@+id/circularProgressBar"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:cpb_background_progressbar_color="#FFCDD2"
-            app:cpb_progress="50"
-            app:cpb_progressbar_color="#F44336"
-            app:cpb_progressbar_width="10dp"
-            app:cpb_secondary_progress="75"
-            app:cpb_start_angle="270"
-            app:cpb_sweep_angle="360"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/circularProgressBar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:cpb_background_progressbar_color="#FFCDD2"
+        app:cpb_progress="50"
+        app:cpb_progressbar_color="#F44336"
+        app:cpb_progressbar_width="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
