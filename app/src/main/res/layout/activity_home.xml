@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
         <variable
             name="Home"
@@ -10,7 +11,6 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.activity.Home">
@@ -32,16 +32,42 @@
 <!--        app:cpb_progress_direction : 진행 막대의 진행 방향을 나타내는 변수입니다. 오른쪽에서 왼쪽 또는 왼쪽에서 오른쪽 중 하나의 값을 가질 수 있습니다.-->
 
     <com.mikhaellopez.circularprogressbar.CircularProgressBar
-        android:id="@+id/circularProgressBar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:cpb_background_progressbar_color="#FFCDD2"
+        android:id="@+id/Check_Time"
+        android:layout_marginTop="120dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:cpb_background_progressbar_color="#fff"
         app:cpb_progress="50"
-        app:cpb_progressbar_color="#F44336"
+        app:cpb_round_border="true"
+        app:cpb_progressbar_color="#FF8A00"
         app:cpb_progressbar_width="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/Target_Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gangwon_education_saeum"
+            android:text="10:10"
+            android:textSize="96sp"
+            app:layout_constraintBottom_toBottomOf="@+id/Check_Time"
+            app:layout_constraintEnd_toEndOf="@+id/Check_Time"
+            app:layout_constraintStart_toStartOf="@+id/Check_Time"
+            app:layout_constraintTop_toTopOf="@+id/Check_Time" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/Current_Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gangwon_education_saeum"
+            android:text="10:10"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="@+id/Check_Time"
+            app:layout_constraintStart_toStartOf="@+id/Check_Time"
+            app:layout_constraintTop_toTopOf="@+id/Target_Time" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

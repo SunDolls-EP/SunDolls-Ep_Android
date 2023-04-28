@@ -68,8 +68,6 @@
             app:layout_constraintTop_toBottomOf="@+id/AppleLoginButton"
             android:onClick="@{() -> Login.callSignIn()}"/>
 
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 
