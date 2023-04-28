@@ -24,19 +24,19 @@ class LoginOAuthViewModel: ViewModel() {
 //    private var googleSignInClient: GoogleSignInClient
 
     private val _navigateToMainActivity = MutableLiveData<Boolean>()
-    val navigateToMainActivity: LiveData<Boolean>
-        get() = _navigateToMainActivity
+//    val navigateToMainActivity: LiveData<Boolean>
+//        get() = _navigateToMainActivity
 //    init {
 //        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
 //            .requestEmail()
 //            .build()
 //
-//        googleSignInClient = GoogleSignIn.getClient(LoginOAuth.getInstance().applicationContext, gso)
+//        googleSignInClient = GoogleSignIn.getClient(Activity().applicationContext, gso)
 //    }
-
+//
 //    fun signIn(context: Context) {
-//        var registry: ActivityResultRegistry ?= null
-//        val signInIntent = googleSignInClient?.signInIntent
+//        var registry: ActivityResultRegistry?= null
+//        val signInIntent = googleSignInClient.signInIntent
 //        if (context is FragmentActivity) {
 //            registry = context.activityResultRegistry
 //        }
