@@ -1,5 +1,6 @@
 package com.narsha.sundolls_ep_android.ui.activity
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -14,5 +15,10 @@ class Home : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.home = viewModel
+        binding.lifecycleOwner = this
+
+        viewModel.Check_Time.observe(this){
+
+        }
     }
 }
