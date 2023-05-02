@@ -47,6 +47,9 @@ dependencies {
     //google OAuth
     implementation 'com.google.android.gms:play-services-auth:20.5.0'
 
+    //Sliding up Panel Layout
+    implementation 'com.sothree.slidinguppanel:library:3.4.0'
+
 
     implementation 'androidx.core:core-ktx:1.10.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
