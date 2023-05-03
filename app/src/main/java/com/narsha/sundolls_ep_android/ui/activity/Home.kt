@@ -17,8 +17,8 @@ class Home : AppCompatActivity() {
         binding.home = viewModel
         binding.lifecycleOwner = this
 
-        viewModel.Check_Time.observe(this){
-
-        }
+//        viewModel.Check_Time.observe(this){
+//
+//        }
     }
 }
