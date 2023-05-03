@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
+        android:background="@color/login_background"
         tools:context=".ui.activity.LoginOAuth">
 
 
@@ -30,7 +30,7 @@
             android:id="@+id/AppleLoginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/backgroung_button_apple_login"
+            android:background="@drawable/background_button_apple_login"
             android:gravity="center"
             android:text="Apple 로그인"
             android:textColor="@color/black"
@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="280dp"
-            android:background="@drawable/backgroung_button_google_login"
+            android:background="@drawable/background_button_google_login"
             android:gravity="center"
             android:textColor="@color/black"
             android:fontFamily="@font/pretendard_bold"
