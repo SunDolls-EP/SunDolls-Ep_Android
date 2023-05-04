@@ -17,30 +17,40 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.narsha.sundolls_ep_android.R
 import com.narsha.sundolls_ep_android.ui.activity.LoginOAuth
 
 class LoginOAuthViewModel: ViewModel() {
 
     private val _goHome = MutableLiveData<Boolean>()
+    private val _accessToken = MutableLiveData<String>()
 
-    private val _navigateToMainActivity = MutableLiveData<Boolean>()
-    val navigateToMainActivity: LiveData<Boolean>
-        get() = _navigateToMainActivity
+    val goHome: LiveData<Boolean>
+        get() = _goHome
+    fun callSignIn() {
+        _goHome.value = true
+    }
+
+    val accessToken: LiveData<String>
+        get() = _accessToken
 
     fun signIn(context: Context) {
         var googleSignInClient: GoogleSignInClient
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
+            .requestIdToken(R.string.server_client_id.toString())
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(context, gso)
 
         var registry: ActivityResultRegistry?= null
         val signInIntent = googleSignInClient.signInIntent
+
         if (context is FragmentActivity) {
             registry = context.activityResultRegistry
         }
+
         val signInActivityResultLauncher = registry?.register(
             "key_sign_in",
             ActivityResultContracts.StartActivityForResult()) { result ->
@@ -54,6 +64,10 @@ class LoginOAuthViewModel: ViewModel() {
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account = completedTask.getResult(ApiException::class.java)
+            val idToken = account.idToken
+            Log.d("상태","${account.idToken}")
+//            _accessToken.value = idToken
+
             // Signed in successfully, show authenticated UI.
         } catch (e: ApiException) {
             // The ApiException status code indicates the detailed failure reason.
@@ -61,12 +75,4 @@ class LoginOAuthViewModel: ViewModel() {
         }
     }
 
-
-
-
-    val goHome: LiveData<Boolean>
-        get() = _goHome
-    fun callSignIn() {
-        _goHome.value = true
-    }
 }
