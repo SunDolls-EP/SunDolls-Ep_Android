@@ -46,6 +46,9 @@ dependencies {
 
     //google OAuth
     implementation 'com.google.android.gms:play-services-auth:20.5.0'
+    implementation 'com.google.apis:google-api-services-people:v1-rev20210419-1.31.0'
+
+
 
     //Sliding up Panel Layout
     implementation 'com.sothree.slidinguppanel:library:3.4.0'
@@ -61,3 +64,4 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
+
