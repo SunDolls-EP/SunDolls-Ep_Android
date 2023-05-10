@@ -5,15 +5,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
 object ClientRetrofit {
-    const val baseURL = "http://"
+    const val baseURL = "http://10.80.163.121:6974/"
 
-    const val googleBaseURL = "https://www.googleapis.com"
-
-    val googleRetrofit = Retrofit.Builder()
-        .baseUrl(googleBaseURL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-    val googleApi: GoogleAPI = googleRetrofit.create(GoogleAPI::class.java)
 
     val retrofit = Retrofit.Builder()
         .baseUrl(baseURL)
