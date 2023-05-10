@@ -20,6 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SunDollsEp_Android"
+        android:usesCleartextTraffic="true"
         tools:targetApi="s">
         <activity
             android:name=".ui.activity.Home"
