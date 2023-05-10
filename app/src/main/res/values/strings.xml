@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">SunDolls-Ep_Android</string>
-    <string name="server_client_id">224818744622-p615etko5tejcd585o7l4dh65s5tgcl8.apps.googleusercontent.com</string>
+    <string name="api_key">AIzaSyA9niSkZLgbFTNg-ruGy0Z1szitP1BiGBA</string>
+    <string name="client_id">224818744622-im9llt0q4jd7qnq06ifuknu8sejv21cq.apps.googleusercontent.com</string>
+    <string name="client_secret">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</string>
+
+    <string name="google_sign_in_api_json">client_secret_224818744622-d1tj3rqr6kc84533lk9lbdmja1kjqi65.apps.googleusercontent.com</string>
 
 </resources>
