@@ -9,7 +9,7 @@ interface API {
 
     @GET("/api/token")
     fun GoogleLogin(
-        @Header("Athorization") googleIdToken: String,
+        @Header("Authorization") googleIdToken: String,
     ): Call<GoogleLogin_Response>
 
 }
