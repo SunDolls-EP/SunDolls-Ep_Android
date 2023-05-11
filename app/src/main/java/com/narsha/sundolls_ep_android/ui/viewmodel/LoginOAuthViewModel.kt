@@ -38,7 +38,4 @@ class LoginOAuthViewModel: ViewModel() {
 
     val accessToken: LiveData<String>
         get() = _accessToken
-
-
-
 }

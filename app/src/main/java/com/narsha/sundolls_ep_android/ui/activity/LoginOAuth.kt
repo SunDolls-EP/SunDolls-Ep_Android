@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.narsha.sundolls_ep_android.R
 import com.narsha.sundolls_ep_android.data.local.googleOAuth.LoginGoogle
 import com.narsha.sundolls_ep_android.databinding.ActivityLoginOauthBinding
@@ -24,11 +26,17 @@ class LoginOAuth : AppCompatActivity() {
         )
     }
 
-    private val loginGoogle = LoginGoogle(this)
+    val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        .requestIdToken("224818744622-c01jteud2afgr9o296c3p4h0p42hmar7.apps.googleusercontent.com")
+        .requestEmail()
+        .requestProfile()
+        .build()
+
 
     private val googleSignInClient: GoogleSignInClient by lazy {
-        GoogleSignIn.getClient(this, loginGoogle.gso)
+        GoogleSignIn.getClient(this, gso)
     }
+
 
 
 
@@ -36,21 +44,19 @@ class LoginOAuth : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-                loginGoogle.handleSignInResult(task)
-                val intent = Intent(this, Home::class.java)
-                startActivity(intent)
-                finish()
+                LoginGoogle(this).handleSignInResult(task)
             } else {
-                Log.d("애러",result.toString())
+                Log.d("애러", result.toString())
             }
         }
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.login = viewModel
         binding.lifecycleOwner = this
+
+
 
         viewModel.goHome.observe(this) {
             val signInIntent = googleSignInClient.signInIntent
@@ -64,6 +70,7 @@ class LoginOAuth : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+
     }
 
     override fun onPause() {
@@ -77,7 +84,6 @@ class LoginOAuth : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
     }
-
 
 
 }

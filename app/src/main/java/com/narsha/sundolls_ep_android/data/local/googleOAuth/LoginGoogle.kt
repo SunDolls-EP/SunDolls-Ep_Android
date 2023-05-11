@@ -1,35 +1,26 @@
 package com.narsha.sundolls_ep_android.data.local.googleOAuth
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.auth.api.signin.GoogleSignIn
+import androidx.core.content.ContextCompat.startActivity
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.api.Scope
 import com.google.android.gms.tasks.Task
-import com.google.api.services.people.v1.PeopleServiceScopes
-import com.narsha.sundolls_ep_android.R
+import com.narsha.sundolls_ep_android.App
 import com.narsha.sundolls_ep_android.data.local.retrofit.ClientRetrofit
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.GoogleLogin_Response.GoogleLogin_Response
+import com.narsha.sundolls_ep_android.ui.activity.Home
+import com.narsha.sundolls_ep_android.ui.activity.LoginOAuth
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class LoginGoogle(private val context: Context) {
 
-
-    val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-        .requestIdToken("224818744622-c01jteud2afgr9o296c3p4h0p42hmar7.apps.googleusercontent.com")
-        .requestEmail()
-        .build()
+    private val loginOAuth = LoginOAuth()
 
 
     fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
@@ -42,30 +33,37 @@ class LoginGoogle(private val context: Context) {
             Log.d("GoogleSignIn", "User idToken: $idToken")
             Login(idToken)
 
-            // 로그인 성공 처리
-            // account.idToken으로 인증 정보를 가져올 수 있습니다.
         } catch (e: ApiException) {
             Log.d("상태", e.message.toString())
-            // 로그인 실패 처리
         }
     }
 
-    fun Login(idToken: String){
-        ClientRetrofit.api.GoogleLogin(idToken).enqueue(object : Callback<GoogleLogin_Response>{
+
+    fun nextActivity() {
+        val intent = Intent(context, Home::class.java)
+        context.startActivity(intent)
+    }
+
+
+    fun Login(idToken: String) {
+        ClientRetrofit.api.GoogleLogin(idToken).enqueue(object : Callback<GoogleLogin_Response> {
             override fun onResponse(
                 call: Call<GoogleLogin_Response>,
                 response: Response<GoogleLogin_Response>
             ) {
-                if(response.isSuccessful){
+                if (response.isSuccessful) {
                     val data = response.body()
-                    Log.d("retrofit",data.toString())
+                    Log.d("retrofit", data.toString())
+                    App.prefs.access_token = data?.access_token
+                    Log.d("access_token", App.prefs.access_token.toString())
+                    nextActivity()
                 } else {
                     Log.d("retrofit", response.code().toString())
                 }
             }
 
             override fun onFailure(call: Call<GoogleLogin_Response>, t: Throwable) {
-                Log.d("retrofit",t.message.toString())
+                Log.d("retrofit", t.message.toString())
             }
         })
     }
