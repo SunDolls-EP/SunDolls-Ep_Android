@@ -33,7 +33,7 @@ class LoginOAuth : AppCompatActivity() {
         .build()
 
 
-    private val googleSignInClient: GoogleSignInClient by lazy {
+    val googleSignInClient: GoogleSignInClient by lazy {
         GoogleSignIn.getClient(this, gso)
     }
 

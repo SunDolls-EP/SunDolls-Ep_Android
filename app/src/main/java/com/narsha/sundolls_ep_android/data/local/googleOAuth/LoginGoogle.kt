@@ -67,4 +67,11 @@ class LoginGoogle(private val context: Context) {
             }
         })
     }
+
+    fun Logout(){
+        loginOAuth.googleSignInClient.signOut()
+            .addOnCanceledListener {
+
+            }
+    }
 }
