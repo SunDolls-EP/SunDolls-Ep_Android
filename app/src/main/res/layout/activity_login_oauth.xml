@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/login_background"
-        tools:context=".ui.activity.LoginOAuth">
+        tools:context=".ui.activity.Login">
 
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -53,7 +53,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:onClick="@{() -> Login.callSignIn()}"/>
+            android:onClick="@{() -> Login.registration()}"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/non_member_in_app"
@@ -67,7 +67,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/AppleLoginButton"
-            />
+            android:onClick="@{() -> Login.non_registration()}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
