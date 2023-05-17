@@ -1,23 +1,29 @@
 package com.narsha.sundolls_ep_android.ui.activity
 
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.narsha.sundolls_ep_android.R
 import com.narsha.sundolls_ep_android.data.local.googleOAuth.LoginGoogle
 import com.narsha.sundolls_ep_android.databinding.ActivityLoginOauthBinding
 import com.narsha.sundolls_ep_android.ui.viewmodel.LoginOAuthViewModel
 
-class LoginOAuth : AppCompatActivity() {
+class Login : AppCompatActivity() {
 
+    companion object{
+        lateinit var instance: Login
+        fun ApplicationContext() : Context {
+            return instance.applicationContext
+        }
+    }
+    init{
+        instance = this
+    }
     private val viewModel: LoginOAuthViewModel by lazy { ViewModelProvider(this)[LoginOAuthViewModel::class.java] }
     private val binding: ActivityLoginOauthBinding by lazy {
         DataBindingUtil.setContentView(
@@ -26,17 +32,8 @@ class LoginOAuth : AppCompatActivity() {
         )
     }
 
-    val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-        .requestIdToken("224818744622-c01jteud2afgr9o296c3p4h0p42hmar7.apps.googleusercontent.com")
-        .requestEmail()
-        .requestProfile()
-        .build()
-
-
-    val googleSignInClient: GoogleSignInClient by lazy {
-        GoogleSignIn.getClient(this, gso)
-    }
-
+    private val loginGoogle = LoginGoogle(this)
+    private val loginOAuthViewModel = LoginOAuthViewModel()
 
 
 
@@ -56,11 +53,13 @@ class LoginOAuth : AppCompatActivity() {
         binding.login = viewModel
         binding.lifecycleOwner = this
 
-
-
-        viewModel.goHome.observe(this) {
-            val signInIntent = googleSignInClient.signInIntent
+        viewModel.registration.observe(this) {
+            val signInIntent = loginGoogle.googleSignInClient.signInIntent
             signInResultLauncher.launch(signInIntent)
+        }
+
+        viewModel.non_registration.observe(this){
+            loginOAuthViewModel.nextActivity()
         }
     }
 

@@ -1,26 +1,25 @@
 package com.narsha.sundolls_ep_android.data.local.googleOAuth
 
-import android.content.Context
-import android.content.Intent
 import android.util.Log
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.narsha.sundolls_ep_android.App
 import com.narsha.sundolls_ep_android.data.local.retrofit.ClientRetrofit
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.GoogleLogin_Response.GoogleLogin_Response
-import com.narsha.sundolls_ep_android.ui.activity.Home
-import com.narsha.sundolls_ep_android.ui.activity.LoginOAuth
+import com.narsha.sundolls_ep_android.ui.activity.Login
+import com.narsha.sundolls_ep_android.ui.viewmodel.LoginOAuthViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginGoogle(private val context: Context) {
+class LoginGoogle(loginOAuth: Login) {
 
-    private val loginOAuth = LoginOAuth()
+    private val loginOAuthViewModel = LoginOAuthViewModel()
+
 
 
     fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
@@ -39,12 +38,10 @@ class LoginGoogle(private val context: Context) {
     }
 
 
-    fun nextActivity() {
-        val intent = Intent(context, Home::class.java)
-        context.startActivity(intent)
-    }
+    //HomeActivity 이동
 
 
+    //서버 로그인(Google idToken으로 로그인함)
     fun Login(idToken: String) {
         ClientRetrofit.api.GoogleLogin(idToken).enqueue(object : Callback<GoogleLogin_Response> {
             override fun onResponse(
@@ -52,11 +49,11 @@ class LoginGoogle(private val context: Context) {
                 response: Response<GoogleLogin_Response>
             ) {
                 if (response.isSuccessful) {
-                    val data = response.body()
-                    Log.d("retrofit", data.toString())
-                    App.prefs.access_token = data?.access_token
+                    val data = response.headers().get("authorization")!!
+                    App.prefs.access_token = data
                     Log.d("access_token", App.prefs.access_token.toString())
-                    nextActivity()
+                    Log.d("User",response.body().toString())
+                    loginOAuthViewModel.nextActivity()
                 } else {
                     Log.d("retrofit", response.code().toString())
                 }
@@ -64,12 +61,25 @@ class LoginGoogle(private val context: Context) {
 
             override fun onFailure(call: Call<GoogleLogin_Response>, t: Throwable) {
                 Log.d("retrofit", t.message.toString())
+                Log.d("retrofit","error")
+
             }
         })
     }
 
+    val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        .requestIdToken("224818744622-c01jteud2afgr9o296c3p4h0p42hmar7.apps.googleusercontent.com")
+        .requestEmail()
+        .requestProfile()
+        .build()
+
+
+    val googleSignInClient: GoogleSignInClient by lazy {
+        GoogleSignIn.getClient(Login.ApplicationContext(), gso)
+    }
+
     fun Logout(){
-        loginOAuth.googleSignInClient.signOut()
+        googleSignInClient.signOut()
             .addOnCanceledListener {
 
             }
