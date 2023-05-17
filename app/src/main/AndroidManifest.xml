@@ -22,6 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SunDollsEp_Android"
         android:usesCleartextTraffic="true"
+        android:noHistory="true"
         tools:targetApi="s">
         <activity
             android:name=".ui.activity.Home"
@@ -29,7 +30,7 @@
 
         </activity>
         <activity
-            android:name=".ui.activity.LoginOAuth"
+            android:name=".ui.activity.Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
