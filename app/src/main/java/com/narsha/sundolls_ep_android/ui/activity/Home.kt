@@ -4,7 +4,10 @@ import android.app.Activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_LOCKED_CLOSED
 import androidx.lifecycle.ViewModelProvider
 import com.narsha.sundolls_ep_android.R
 import com.narsha.sundolls_ep_android.databinding.ActivityHomeBinding
@@ -22,15 +25,22 @@ class Home : AppCompatActivity() {
         instance = this
     }
 
+
     private val viewModel: HomeViewModel by lazy { ViewModelProvider(this)[HomeViewModel::class.java] }
-    private val binding by lazy { DataBindingUtil.setContentView<ActivityHomeBinding>(this, R.layout.activity_home) }
+    val binding: ActivityHomeBinding by lazy { DataBindingUtil.setContentView(this, R.layout.activity_home) }
+    private lateinit var homeViewModel: HomeViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.home = viewModel
+        binding.homeViewModel = viewModel
         binding.lifecycleOwner = this
+        binding.DrawerLayout.setDrawerLockMode(LOCK_MODE_LOCKED_CLOSED)
+        homeViewModel = HomeViewModel()
 
-//        viewModel.Check_Time.observe(this){
-//
-//        }
+        viewModel.onclickDrawerLayout.observe(this) {
+            homeViewModel.OnclickDrawerOpen(binding)
+        }
+
     }
+
+
 }
