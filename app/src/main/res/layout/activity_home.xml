@@ -6,8 +6,12 @@
     <data>
 
         <variable
-            name="Home"
+            name="HomeViewModel"
             type="com.narsha.sundolls_ep_android.ui.viewmodel.HomeViewModel" />
+
+        <variable
+            name="Home"
+            type="com.narsha.sundolls_ep_android.ui.activity.Home" />
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout
