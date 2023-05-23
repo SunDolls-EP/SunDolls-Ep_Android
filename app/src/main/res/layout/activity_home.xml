@@ -7,7 +7,7 @@
 
         <variable
             name="HomeViewModel"
-            type="com.narsha.sundolls_ep_android.ui.viewmodel.HomeViewModel" />
+            type="com.narsha.sundolls_ep_android.ui.viewmodel.activity.HomeViewModel" />
 
         <variable
             name="Home"
@@ -52,6 +52,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gangwon_education_saeum"
@@ -84,11 +85,13 @@
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:layout_marginTop="160dp"
-                app:cpb_background_progressbar_color="#fff"
+                app:cpb_background_progressbar_color="#858585"
                 app:cpb_progress="40"
-                app:cpb_progressbar_color="#FF8A00"
-                app:cpb_progressbar_width="10dp"
-                app:cpb_round_border="true"
+                app:cpb_progressbar_color="#2A2A2A"
+                app:cpb_progressbar_width="7dp"
+                app:cpb_background_progressbar_width="7dp"
+                app:cpb_round_border="false"
+                android:elevation="100dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -102,6 +105,7 @@
                 android:text="10:10"
                 android:textColor="@color/white"
                 android:textSize="96sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/Check_Time"
                 app:layout_constraintEnd_toEndOf="@+id/Check_Time"
                 app:layout_constraintStart_toStartOf="@+id/Check_Time"
@@ -121,7 +125,7 @@
                 app:layout_constraintTop_toTopOf="@+id/Target_Time" />
 
             <View
-                android:id="@+id/group_31"
+                android:id="@+id/setting"
                 android:layout_width="310dp"
                 android:layout_height="84dp"
                 android:layout_alignParentTop="true"
@@ -132,6 +136,75 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Check_Time">
             </View>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/stop"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/icon_stop"
+                app:layout_constraintBottom_toBottomOf="@+id/setting"
+                app:layout_constraintEnd_toStartOf="@+id/view"
+                app:layout_constraintStart_toStartOf="@+id/setting"
+                app:layout_constraintTop_toTopOf="@+id/setting" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gangwon_education_saeum"
+                android:text="STOP"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/setting"
+                app:layout_constraintEnd_toStartOf="@+id/view"
+                app:layout_constraintStart_toStartOf="@+id/setting"
+                app:layout_constraintTop_toBottomOf="@+id/stop" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/view"
+                android:layout_width="1dp"
+                android:layout_height="60dp"
+                android:src="@drawable/line"
+                app:layout_constraintBottom_toBottomOf="@+id/setting"
+                app:layout_constraintEnd_toEndOf="@+id/setting"
+                app:layout_constraintStart_toStartOf="@+id/setting"
+                app:layout_constraintTop_toTopOf="@+id/setting" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/skip"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/icon_skip"
+                app:layout_constraintBottom_toBottomOf="@+id/setting"
+                app:layout_constraintEnd_toEndOf="@+id/setting"
+                app:layout_constraintStart_toEndOf="@+id/view"
+                app:layout_constraintTop_toTopOf="@+id/setting" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gangwon_education_saeum"
+                android:text="SKIP"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/setting"
+                app:layout_constraintEnd_toEndOf="@+id/setting"
+                app:layout_constraintStart_toEndOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/skip" />
+
+
+
+
+
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:menu="@menu/menu_bottom_navigation"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.navigation.NavigationView
@@ -141,6 +214,8 @@
             android:layout_gravity="start"
             app:headerLayout="@layout/navigation_beader"
             app:menu="@menu/menu_navigation"/>
+
+
     </androidx.drawerlayout.widget.DrawerLayout>
 
 
