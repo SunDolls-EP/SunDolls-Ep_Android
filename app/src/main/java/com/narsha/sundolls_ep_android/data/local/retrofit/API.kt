@@ -1,6 +1,6 @@
 package com.narsha.sundolls_ep_android.data.local.retrofit
 
-import com.narsha.sundolls_ep_android.data.local.retrofit.response.GoogleLogin_Response.GoogleLogin_Response
+import com.narsha.sundolls_ep_android.data.local.retrofit.response.GoogleLogin_Response.GoogleLoginResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -10,6 +10,6 @@ interface API {
     @GET("/api/token")
     fun GoogleLogin(
         @Header("Authorization") googleIdToken: String,
-    ): Call<GoogleLogin_Response>
+    ): Call<GoogleLoginResponse>
 
 }
