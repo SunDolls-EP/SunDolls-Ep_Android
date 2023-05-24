@@ -50,13 +50,28 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding.homeViewModel = viewModel
         binding.lifecycleOwner = this
-        binding.DrawerLayout.setDrawerLockMode(LOCK_MODE_LOCKED_CLOSED)
         homeViewModel = HomeViewModel()
 
-        viewModel.onclickDrawerLayout.observe(this) {
-            homeViewModel.OnclickDrawerOpen(binding)
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.novel -> replaceFragment(friendFragment)
+                R.id.home -> replaceFragment(homeFragment)
+                R.id.ranking -> replaceFragment(rankingFragment)
+            }
+            true
         }
 
+        binding.bottomNavigation.selectedItemId = R.id.home
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        fragmentManager.beginTransaction()
+            .replace(R.id.frame, fragment)
+            .commit()
     }
 
 
