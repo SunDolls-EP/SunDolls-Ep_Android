@@ -11,7 +11,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.narsha.sundolls_ep_android.R
 import com.narsha.sundolls_ep_android.data.local.googleOAuth.LoginGoogle
 import com.narsha.sundolls_ep_android.databinding.ActivityLoginOauthBinding
-import com.narsha.sundolls_ep_android.ui.viewmodel.LoginOAuthViewModel
+import com.narsha.sundolls_ep_android.ui.viewmodel.activity.LoginOAuthViewModel
 
 class Login : AppCompatActivity() {
 
@@ -32,7 +32,7 @@ class Login : AppCompatActivity() {
         )
     }
 
-    private val loginGoogle = LoginGoogle(this)
+    private val loginGoogle = LoginGoogle()
     private val loginOAuthViewModel = LoginOAuthViewModel()
 
 
