@@ -9,7 +9,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.narsha.sundolls_ep_android.App
 import com.narsha.sundolls_ep_android.data.local.retrofit.ClientRetrofit
-import com.narsha.sundolls_ep_android.data.local.retrofit.response.GoogleLogin_Response.GoogleLoginResponse
+import com.narsha.sundolls_ep_android.data.local.retrofit.response.googleLoginResponse.GoogleLoginResponse
 import com.narsha.sundolls_ep_android.ui.activity.Login
 import com.narsha.sundolls_ep_android.ui.viewmodel.activity.LoginOAuthViewModel
 import retrofit2.Call
