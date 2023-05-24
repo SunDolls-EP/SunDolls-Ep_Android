@@ -42,7 +42,6 @@ class Login : AppCompatActivity() {
             if (result.resultCode == RESULT_OK) {
                 val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
                 LoginGoogle().handleSignInResult(task)
-                finish()
             } else {
                 Log.d("애러", result.toString())
             }
