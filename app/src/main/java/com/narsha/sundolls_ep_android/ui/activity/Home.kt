@@ -54,9 +54,17 @@ class Home : AppCompatActivity() {
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.novel -> replaceFragment(friendFragment)
-                R.id.home -> replaceFragment(homeFragment)
-                R.id.ranking -> replaceFragment(rankingFragment)
+                R.id.novel -> {
+                    replaceFragment(friendFragment)
+                    //친구 불러오기
+                    fragmentViewModel.getFriend()
+                }
+                R.id.home ->{
+                    replaceFragment(homeFragment)
+                }
+                R.id.ranking -> {
+                    replaceFragment(rankingFragment)
+                }
             }
             true
         }
