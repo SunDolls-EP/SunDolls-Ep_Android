@@ -2,8 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="login_background">#FFDCDC</color>
-    <color name="home_background_1">#333333</color>
+    <color name="background">#4B4B4B</color>
+    <color name="home_background_1">#4B4B4B</color>
     <color name="home_background_2">#f00</color>
     <color name="colorTransparent">#00FFFFFF</color>
+    <color name="pointColor">#2F2F2F</color>
 </resources>
