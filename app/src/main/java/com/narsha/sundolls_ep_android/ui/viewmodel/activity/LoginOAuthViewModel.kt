@@ -1,4 +1,4 @@
-package com.narsha.sundolls_ep_android.ui.viewmodel
+package com.narsha.sundolls_ep_android.ui.viewmodel.activity
 
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
