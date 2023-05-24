@@ -9,10 +9,11 @@
             name="ranking"
             type="com.narsha.sundolls_ep_android.ui.viewmodel.fragment.RankingViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#0f0"
+        android:background="@color/background"
         tools:context=".ui.fragment.RankingFragment">
 
 
