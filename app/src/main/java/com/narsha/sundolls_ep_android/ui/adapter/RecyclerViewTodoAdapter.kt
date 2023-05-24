@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.narsha.sundolls_ep_android.R
 import com.narsha.sundolls_ep_android.databinding.RecyclerviewItemTodoBinding
 
-class TodoRecyclerViewAdapter(var data: ArrayList<TodoRecyclerView_data>): RecyclerView.Adapter<TodoRecyclerViewAdapter.MyViewHolder>() {
+class RecyclerViewTodoAdapter(var data: ArrayList<RecyclerViewTodoData>): RecyclerView.Adapter<RecyclerViewTodoAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(private val binding: RecyclerviewItemTodoBinding): RecyclerView.ViewHolder(binding.root){
         val text = binding.todoText
