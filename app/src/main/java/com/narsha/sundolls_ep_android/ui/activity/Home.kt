@@ -15,13 +15,14 @@ import com.narsha.sundolls_ep_android.ui.viewmodel.HomeViewModel
 
 class Home : AppCompatActivity() {
 
-    companion object{
+    companion object {
         lateinit var instance: Home
-        fun ApplicationContext() : Context {
+        fun ApplicationContext(): Context {
             return instance.applicationContext
         }
     }
-    init{
+
+    init {
         instance = this
     }
 
@@ -35,7 +36,14 @@ class Home : AppCompatActivity() {
 
 
     private val viewModel: HomeViewModel by lazy { ViewModelProvider(this)[HomeViewModel::class.java] }
-    val binding: ActivityHomeBinding by lazy { DataBindingUtil.setContentView(this, R.layout.activity_home) }
+    val binding: ActivityHomeBinding by lazy {
+        DataBindingUtil.setContentView(
+            this,
+            R.layout.activity_home
+        )
+    }
+
+
     private lateinit var homeViewModel: HomeViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
