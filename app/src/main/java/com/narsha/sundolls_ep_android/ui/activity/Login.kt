@@ -41,7 +41,8 @@ class Login : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-                LoginGoogle(this).handleSignInResult(task)
+                LoginGoogle().handleSignInResult(task)
+                finish()
             } else {
                 Log.d("애러", result.toString())
             }
@@ -60,6 +61,7 @@ class Login : AppCompatActivity() {
 
         viewModel.non_registration.observe(this){
             loginOAuthViewModel.nextActivity()
+            finish()
         }
     }
 
