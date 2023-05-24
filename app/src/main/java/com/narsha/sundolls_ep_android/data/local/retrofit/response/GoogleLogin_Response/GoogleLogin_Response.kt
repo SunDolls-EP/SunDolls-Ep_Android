@@ -2,7 +2,7 @@ package com.narsha.sundolls_ep_android.data.local.retrofit.response.GoogleLogin_
 
 import com.google.gson.annotations.SerializedName
 
-data class GoogleLogin_Response(
+data class GoogleLoginResponse(
     @SerializedName("username")
     val username: String,
     @SerializedName("schoolName")
