@@ -25,6 +25,14 @@ class Home : AppCompatActivity() {
         instance = this
     }
 
+    private val transaction = supportFragmentManager.beginTransaction()
+    private val fragmentManager: FragmentManager = supportFragmentManager
+
+
+    private val friendFragment = FriendFragment()
+    private val homeFragment = HomeFragment()
+    private val rankingFragment = RankingFragment()
+
 
     private val viewModel: HomeViewModel by lazy { ViewModelProvider(this)[HomeViewModel::class.java] }
     val binding: ActivityHomeBinding by lazy { DataBindingUtil.setContentView(this, R.layout.activity_home) }
