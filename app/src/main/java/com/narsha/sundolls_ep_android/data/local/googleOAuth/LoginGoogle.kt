@@ -9,14 +9,14 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.narsha.sundolls_ep_android.App
 import com.narsha.sundolls_ep_android.data.local.retrofit.ClientRetrofit
-import com.narsha.sundolls_ep_android.data.local.retrofit.response.GoogleLogin_Response.GoogleLogin_Response
+import com.narsha.sundolls_ep_android.data.local.retrofit.response.GoogleLogin_Response.GoogleLoginResponse
 import com.narsha.sundolls_ep_android.ui.activity.Login
-import com.narsha.sundolls_ep_android.ui.viewmodel.LoginOAuthViewModel
+import com.narsha.sundolls_ep_android.ui.viewmodel.activity.LoginOAuthViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginGoogle(loginOAuth: Login) {
+class LoginGoogle() {
 
     private val loginOAuthViewModel = LoginOAuthViewModel()
 
@@ -43,10 +43,10 @@ class LoginGoogle(loginOAuth: Login) {
 
     //서버 로그인(Google idToken으로 로그인함)
     fun Login(idToken: String) {
-        ClientRetrofit.api.GoogleLogin(idToken).enqueue(object : Callback<GoogleLogin_Response> {
+        ClientRetrofit.api.GoogleLogin(idToken).enqueue(object : Callback<GoogleLoginResponse> {
             override fun onResponse(
-                call: Call<GoogleLogin_Response>,
-                response: Response<GoogleLogin_Response>
+                call: Call<GoogleLoginResponse>,
+                response: Response<GoogleLoginResponse>
             ) {
                 if (response.isSuccessful) {
                     val data = response.headers().get("authorization")!!
@@ -59,10 +59,9 @@ class LoginGoogle(loginOAuth: Login) {
                 }
             }
 
-            override fun onFailure(call: Call<GoogleLogin_Response>, t: Throwable) {
+            override fun onFailure(call: Call<GoogleLoginResponse>, t: Throwable) {
                 Log.d("retrofit", t.message.toString())
                 Log.d("retrofit","error")
-
             }
         })
     }
