@@ -29,7 +29,8 @@ class Home : AppCompatActivity() {
         instance = this
     }
 
-    private val transaction = supportFragmentManager.beginTransaction()
+    private val fragmentViewModel = FriendViewModel()
+
     private val fragmentManager: FragmentManager = supportFragmentManager
 
 
