@@ -1,6 +1,7 @@
 package com.narsha.sundolls_ep_android.data.local.retrofit
 
-import com.narsha.sundolls_ep_android.data.local.retrofit.response.GoogleLogin_Response.GoogleLoginResponse
+import com.narsha.sundolls_ep_android.data.local.retrofit.response.friendLookupResponse.FriendLookupResponse
+import com.narsha.sundolls_ep_android.data.local.retrofit.response.googleLoginResponse.GoogleLoginResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -11,5 +12,11 @@ interface API {
     fun GoogleLogin(
         @Header("Authorization") googleIdToken: String,
     ): Call<GoogleLoginResponse>
+
+    @GET("/api/user/friend")
+    fun friendLookup(
+        @Header("Authorization") googleIdToken: String,
+    ): Call<FriendLookupResponse>
+
 
 }
