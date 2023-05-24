@@ -1,17 +1,18 @@
 package com.narsha.sundolls_ep_android.ui.activity
 
-import android.app.Activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.databinding.DataBindingUtil
-import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_LOCKED_CLOSED
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import com.narsha.sundolls_ep_android.R
 import com.narsha.sundolls_ep_android.databinding.ActivityHomeBinding
-import com.narsha.sundolls_ep_android.ui.viewmodel.HomeViewModel
+import com.narsha.sundolls_ep_android.ui.fragment.FriendFragment
+import com.narsha.sundolls_ep_android.ui.fragment.HomeFragment
+import com.narsha.sundolls_ep_android.ui.fragment.RankingFragment
+import com.narsha.sundolls_ep_android.ui.viewmodel.activity.HomeViewModel
 
 class Home : AppCompatActivity() {
 
