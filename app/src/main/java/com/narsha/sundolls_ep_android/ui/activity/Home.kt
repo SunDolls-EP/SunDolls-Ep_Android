@@ -3,6 +3,7 @@ package com.narsha.sundolls_ep_android.ui.activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -13,6 +14,7 @@ import com.narsha.sundolls_ep_android.ui.fragment.FriendFragment
 import com.narsha.sundolls_ep_android.ui.fragment.HomeFragment
 import com.narsha.sundolls_ep_android.ui.fragment.RankingFragment
 import com.narsha.sundolls_ep_android.ui.viewmodel.activity.HomeViewModel
+import com.narsha.sundolls_ep_android.ui.viewmodel.fragment.FriendViewModel
 
 class Home : AppCompatActivity() {
 
