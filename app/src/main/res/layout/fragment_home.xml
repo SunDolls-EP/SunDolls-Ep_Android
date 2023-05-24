@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="home"
+            type="com.narsha.sundolls_ep_android.ui.viewmodel.fragment.HomeViewModel" />
+    </data>
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/DrawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/home_background_1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/drawerlayout_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="@{() -> home.OnclickDrawerLayout()}"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/gangwon_education_saeum"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Eagle Pop"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                app:layout_constraintBottom_toTopOf="@+id/Check_Time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gangwon_education_saeum"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Studying"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />
+            <!--        app:cpb_progress : 현재 진행 상황을 나타내는 정수형 변수입니다. 0부터 app:cpb_progress_max까지의 값을 가질 수 있습니다.-->
+            <!--        app:cpb_progress_max : 진행 상황의 최대 값입니다. app:cpb_progress가 이 값에 도달하면 작업이 완료된 것으로 간주합니다.-->
+            <!--        app:cpb_indeterminate_mode : 진행 상황이 결정되지 않은 경우, 즉 작업이 언제 끝나는지 예측할 수 없는 경우에 사용되는 부울 변수입니다.-->
+            <!--        app:cpb_progressbar_color : 진행 막대의 색상을 나타내는 변수입니다.-->
+            <!--        app:cpb_progressbar_color_start : 진행 막대의 시작 색상을 나타내는 변수입니다. 만약 app:cpb_progressbar_color와 같은 색상을 가진다면, 색상 그라데이션 효과가 없을 것입니다.-->
+            <!--        app:cpb_progressbar_color_end : 진행 막대의 끝 색상을 나타내는 변수입니다. app:cpb_progressbar_color_start와 비슷하게 색상 그라데이션 효과를 줄 수 있습니다.-->
+            <!--        app:cpb_progressbar_color_direction : 진행 막대의 그라데이션 방향을 나타내는 변수입니다. 왼쪽에서 오른쪽, 오른쪽에서 왼쪽, 위에서 아래, 아래에서 위 중 하나의 값을 가질 수 있습니다.-->
+            <!--        app:cpb_progressbar_width : 진행 막대의 두께를 나타내는 변수입니다.-->
+            <!--        app:cpb_background_progressbar_color : 진행 막대의 배경 색상을 나타내는 변수입니다.-->
+            <!--        app:cpb_background_progressbar_color_start : 진행 막대의 배경 시작 색상을 나타내는 변수입니다.-->
+            <!--        app:cpb_background_progressbar_color_end : 진행 막대의 배경 끝 색상을 나타내는 변수입니다.-->
+            <!--        app:cpb_background_progressbar_color_direction : 진행 막대 배경의 그라데이션 방향을 나타내는 변수입니다.-->
+            <!--        app:cpb_background_progressbar_width : 진행 막대 배경의 두께를 나타내는 변수입니다.-->
+            <!--        app:cpb_round_border : 진행 막대의 테두리를 둥글게 만들지 여부를 결정하는 부울 변수입니다.-->
+            <!--        app:cpb_start_angle : 진행 막대의 시작 각도를 나타내는 변수입니다. 기본 값은 위쪽 방향인 0도입니다.-->
+            <!--        app:cpb_progress_direction : 진행 막대의 진행 방향을 나타내는 변수입니다. 오른쪽에서 왼쪽 또는 왼쪽에서 오른쪽 중 하나의 값을 가질 수 있습니다.-->
+
+            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                android:id="@+id/Check_Time"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="160dp"
+                app:cpb_background_progressbar_color="#858585"
+                app:cpb_progress="40"
+                app:cpb_progressbar_color="#2A2A2A"
+                app:cpb_progressbar_width="7dp"
+                app:cpb_background_progressbar_width="7dp"
+                app:cpb_round_border="false"
+                android:elevation="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/Target_Time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gangwon_education_saeum"
+                android:text="10:10"
+                android:textColor="@color/white"
+                android:textSize="96sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/Check_Time"
+                app:layout_constraintEnd_toEndOf="@+id/Check_Time"
+                app:layout_constraintStart_toStartOf="@+id/Check_Time"
+                app:layout_constraintTop_toTopOf="@+id/Check_Time" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/Current_Time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gangwon_education_saeum"
+                android:text="10:10"
+                android:textColor="@color/white"
+                android:textSize="36sp"
+                app:layout_constraintEnd_toEndOf="@+id/Check_Time"
+                app:layout_constraintStart_toStartOf="@+id/Check_Time"
+                app:layout_constraintTop_toTopOf="@+id/Target_Time" />
+
+            <View
+                android:id="@+id/setting"
+                android:layout_width="310dp"
+                android:layout_height="84dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/background_setting"
+                android:layout_marginTop="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Check_Time">
+            </View>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/stop"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/icon_stop"
+                app:layout_constraintBottom_toBottomOf="@+id/setting"
+                app:layout_constraintEnd_toStartOf="@+id/view"
+                app:layout_constraintStart_toStartOf="@+id/setting"
+                app:layout_constraintTop_toTopOf="@+id/setting" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gangwon_education_saeum"
+                android:text="STOP"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/setting"
+                app:layout_constraintEnd_toStartOf="@+id/view"
+                app:layout_constraintStart_toStartOf="@+id/setting"
+                app:layout_constraintTop_toBottomOf="@+id/stop" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/view"
+                android:layout_width="1dp"
+                android:layout_height="60dp"
+                android:src="@drawable/line"
+                app:layout_constraintBottom_toBottomOf="@+id/setting"
+                app:layout_constraintEnd_toEndOf="@+id/setting"
+                app:layout_constraintStart_toStartOf="@+id/setting"
+                app:layout_constraintTop_toTopOf="@+id/setting" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/skip"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/icon_skip"
+                app:layout_constraintBottom_toBottomOf="@+id/setting"
+                app:layout_constraintEnd_toEndOf="@+id/setting"
+                app:layout_constraintStart_toEndOf="@+id/view"
+                app:layout_constraintTop_toTopOf="@+id/setting" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gangwon_education_saeum"
+                android:text="SKIP"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/setting"
+                app:layout_constraintEnd_toEndOf="@+id/setting"
+                app:layout_constraintStart_toEndOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/skip" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/main_drawer_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/navigation_beader"
+            app:menu="@menu/menu_navigation"/>
+
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>
