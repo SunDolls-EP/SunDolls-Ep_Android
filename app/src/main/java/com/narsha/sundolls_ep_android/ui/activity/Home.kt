@@ -54,6 +54,28 @@ class Home : AppCompatActivity() {
         binding.homeViewModel = viewModel
         binding.lifecycleOwner = this
         homeViewModel = HomeViewModel()
+        val rankingViewModel = RankingViewModel()
+        binding.bottomNavigation.itemIconTintList = null
+
+
+        val colorStateList = ColorStateList.valueOf(Color.TRANSPARENT)
+
+        binding.bottomNavigation.itemTextColor = ColorStateList(
+            arrayOf(
+                intArrayOf(android.R.attr.state_checked),
+                intArrayOf(-android.R.attr.state_checked)
+            ),
+            intArrayOf(
+                getColor(R.color.true_color),
+                getColor(R.color.false_color)
+            )
+        )
+
+        binding.bottomNavigation.itemIconTintList = colorStateList
+        binding.bottomNavigation.itemRippleColor = null
+        binding.bottomNavigation.itemBackground = null
+
+
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
