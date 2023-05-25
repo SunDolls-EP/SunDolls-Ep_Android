@@ -137,6 +137,7 @@
                 android:layout_height="30dp"
                 android:layout_marginBottom="20dp"
                 android:src="@drawable/icon_stop"
+                android:onClick="@{() -> home.timer()}"
                 app:layout_constraintBottom_toBottomOf="@+id/setting"
                 app:layout_constraintEnd_toStartOf="@+id/view"
                 app:layout_constraintStart_toStartOf="@+id/setting"
@@ -194,8 +195,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            app:headerLayout="@layout/navigation_beader"
-            app:menu="@menu/menu_navigation"/>
+            app:headerLayout="@layout/navigation_beader" />
 
 
     </androidx.drawerlayout.widget.DrawerLayout>
