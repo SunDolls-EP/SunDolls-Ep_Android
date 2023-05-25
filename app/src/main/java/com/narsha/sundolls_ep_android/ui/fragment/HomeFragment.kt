@@ -67,7 +67,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.onclickDrawerLayout.observe(viewLifecycleOwner) {
-            viewModel.OnclickDrawerOpen(binding)
+            viewModel.onclickDrawerLayout()
         }
 
         viewModel.timerState.observe(viewLifecycleOwner){
