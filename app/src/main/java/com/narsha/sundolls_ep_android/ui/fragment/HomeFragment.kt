@@ -54,7 +54,18 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.home = viewModel
 
+
+        recyclerViewBinding = NavigationBeaderBinding.inflate(inflater, container, false)
         binding.DrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        recyclerViewBinding.lifecycleOwner = this
+        recyclerViewBinding.recyclerTODO.layoutManager = LinearLayoutManager(context)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         viewModel.onclickDrawerLayout.observe(viewLifecycleOwner) {
             viewModel.OnclickDrawerOpen(binding)
         }
