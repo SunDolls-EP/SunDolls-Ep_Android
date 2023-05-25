@@ -17,8 +17,6 @@ import retrofit2.Response
 
 class FriendViewModel(): ViewModel() {
 
-    private val viewModelScope = CoroutineScope(Dispatchers.Main)
-
     private val _recyclerView = MutableLiveData<FriendLookupResponse>()
     val recyclerView: LiveData<FriendLookupResponse>
         get() = _recyclerView
