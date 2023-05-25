@@ -28,7 +28,7 @@
                 android:src="@drawable/drawerlayout_button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:onClick="@{() -> home.OnclickDrawerLayout()}"/>
+                android:onClick="@{() -> home.onclickDrawerLayout()}"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/appCompatTextView2"
