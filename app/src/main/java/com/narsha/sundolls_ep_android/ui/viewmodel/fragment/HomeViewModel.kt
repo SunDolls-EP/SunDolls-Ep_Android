@@ -21,13 +21,17 @@ class HomeViewModel : ViewModel() {
     val onclickDrawerLayout: LiveData<Boolean>
         get() = _onclickDrawerLayout
 
-    private val _onclickTimer = MutableLiveData<Long>()
-    val onclickTimer: LiveData<Long>
-        get() = _onclickTimer
+    private val _Timer = MutableLiveData<Long>()
+    val Timer: LiveData<Long>
+        get() = Timer
 
     private val _timerState = MutableLiveData<Boolean>()
     val timerState: LiveData<Boolean>
         get() = _timerState
+
+    private val _timerSkip = MutableLiveData<Boolean>()
+    val timerSkip: LiveData<Boolean>
+        get() = _timerSkip
 
 
 
@@ -37,6 +41,10 @@ class HomeViewModel : ViewModel() {
 
     fun timer(){
         _timerState.value = true
+    }
+
+    fun skip(){
+        _timerSkip.value = true
     }
 
 
