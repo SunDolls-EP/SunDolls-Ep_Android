@@ -67,11 +67,10 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.onclickDrawerLayout.observe(viewLifecycleOwner) {
-            viewModel.onclickDrawerLayout()
+            viewModel.onclickDrawerOpen(binding)
         }
 
         viewModel.timerState.observe(viewLifecycleOwner){
-            Log.d("상태","버튼")
             if(!timeStatus){
                 startTimer()
                 Log.d("상태",timeStatus.toString())
@@ -81,6 +80,10 @@ class HomeFragment : Fragment() {
                 Log.d("상태",timeStatus.toString())
                 timeStatus = false
             }
+        }
+
+        viewModel.timerSkip.observe(viewLifecycleOwner){
+            skipTimer()
         }
     }
 
@@ -100,9 +103,20 @@ class HomeFragment : Fragment() {
         timer?.purge()
         timer = null
         timerTask = null
+//        timeSeconds = 0
+        handler.post { updateTimerText() }
+    }
+
+    private fun skipTimer() {
+        timer?.cancel()
+        timer?.purge()
+        timer = null
+        timerTask = null
         timeSeconds = 0
         handler.post { updateTimerText() }
     }
+
+
 
     override fun onResume() {
         super.onResume()
