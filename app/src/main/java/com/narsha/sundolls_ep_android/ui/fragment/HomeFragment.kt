@@ -96,6 +96,12 @@ class HomeFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        App.prefs.time = timeSeconds
+        Log.d("라이프","onDestroyView")
+    }
+
     private fun startTimer(){
         timer = Timer()
         timerTask = object :TimerTask(){
@@ -108,6 +114,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun stopTimer() {
+        App.prefs.time = timeSeconds
         timer?.cancel()
         timer?.purge()
         timer = null
@@ -121,6 +128,7 @@ class HomeFragment : Fragment() {
         timer = null
         timerTask = null
         timeSeconds = 0
+        App.prefs.time = 0
         handler.post { updateTimerText() }
     }
 
