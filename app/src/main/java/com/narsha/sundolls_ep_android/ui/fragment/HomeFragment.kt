@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.narsha.sundolls_ep_android.App
 import com.narsha.sundolls_ep_android.databinding.FragmentHomeBinding
 import com.narsha.sundolls_ep_android.databinding.NavigationBeaderBinding
 import com.narsha.sundolls_ep_android.ui.viewmodel.fragment.HomeViewModel
@@ -50,9 +51,14 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        UITimer()
+        Log.d("라이프","onCreateView")
+        timeSeconds = App.prefs.time
+
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.home = viewModel
+
 
 
         recyclerViewBinding = NavigationBeaderBinding.inflate(inflater, container, false)
@@ -65,6 +71,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        UITimer()
+
+        Log.d("라이프","onViewCreated")
 
         viewModel.onclickDrawerLayout.observe(viewLifecycleOwner) {
             viewModel.onclickDrawerOpen(binding)
@@ -103,7 +112,6 @@ class HomeFragment : Fragment() {
         timer?.purge()
         timer = null
         timerTask = null
-//        timeSeconds = 0
         handler.post { updateTimerText() }
     }
 
@@ -117,9 +125,12 @@ class HomeFragment : Fragment() {
     }
 
 
-
-    override fun onResume() {
-        super.onResume()
+    private fun UITimer(){
+        timerTask = object : TimerTask(){
+            override fun run() {
+                handler.post { updateTimerText() }
+            }
+        }
     }
 
     private fun updateTimerText() {
