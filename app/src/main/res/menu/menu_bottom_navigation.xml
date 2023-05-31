@@ -2,19 +2,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
         android:id="@+id/novel"
-        android:icon="@color/white"
         android:title="소설"
-        app:showAsAction="ifRoom"/>
-    <item
-        android:id="@+id/home"
-        android:icon="@color/white"
-        android:title="홈"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="withText"/>
+
     <item
         android:id="@+id/ranking"
-        android:icon="@color/white"
         android:title="랭킹"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="withText"/>
+
+    <item
+        android:id="@+id/home"
+        android:title="홈"
+        app:showAsAction="withText"/>
+
+    <item
+        android:id="@+id/calendar"
+        android:title="달력"
+        app:showAsAction="withText"/>
+
+    <item
+        android:id="@+id/setting"
+        android:title="설정"
+        app:showAsAction="withText"/>
 </menu>
