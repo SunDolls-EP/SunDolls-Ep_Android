@@ -16,7 +16,6 @@ import kotlin.concurrent.timer
 
 class HomeViewModel : ViewModel() {
 
-
     private val _onclickDrawerLayout = MutableLiveData<Boolean>()
     val onclickDrawerLayout: LiveData<Boolean>
         get() = _onclickDrawerLayout
@@ -33,8 +32,6 @@ class HomeViewModel : ViewModel() {
     val timerSkip: LiveData<Boolean>
         get() = _timerSkip
 
-
-
     fun onclickDrawerLayout() {
         _onclickDrawerLayout.value = true
     }
@@ -46,8 +43,6 @@ class HomeViewModel : ViewModel() {
     fun skip(){
         _timerSkip.value = true
     }
-
-
 
     fun onclickDrawerOpen(binding: FragmentHomeBinding) {
         if (binding.DrawerLayout.isDrawerOpen(Gravity.LEFT)) {
