@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/gangwon_education_saeum"
             android:textSize="32sp"
+            android:textColor="@color/black"
             android:text="자고싶당"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,20 +1,27 @@
 package com.narsha.sundolls_ep_android.ui.activity
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import com.narsha.sundolls_ep_android.R
 import com.narsha.sundolls_ep_android.databinding.ActivityHomeBinding
+import com.narsha.sundolls_ep_android.databinding.FragmentHomeBinding
 import com.narsha.sundolls_ep_android.ui.fragment.FriendFragment
 import com.narsha.sundolls_ep_android.ui.fragment.HomeFragment
 import com.narsha.sundolls_ep_android.ui.fragment.RankingFragment
 import com.narsha.sundolls_ep_android.ui.viewmodel.activity.HomeViewModel
 import com.narsha.sundolls_ep_android.ui.viewmodel.fragment.FriendViewModel
+import com.narsha.sundolls_ep_android.ui.viewmodel.fragment.RankingViewModel
+import kotlin.concurrent.timer
 
 class Home : AppCompatActivity() {
 
@@ -33,7 +40,6 @@ class Home : AppCompatActivity() {
 
     private val fragmentManager: FragmentManager = supportFragmentManager
 
-
     private val friendFragment = FriendFragment()
     private val homeFragment = HomeFragment()
     private val rankingFragment = RankingFragment()
@@ -51,11 +57,14 @@ class Home : AppCompatActivity() {
     private lateinit var homeViewModel: HomeViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding.homeViewModel = viewModel
         binding.lifecycleOwner = this
         homeViewModel = HomeViewModel()
         val rankingViewModel = RankingViewModel()
         binding.bottomNavigation.itemIconTintList = null
+
+
 
 
         val colorStateList = ColorStateList.valueOf(Color.TRANSPARENT)
@@ -77,6 +86,7 @@ class Home : AppCompatActivity() {
 
 
 
+
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.novel -> {
@@ -89,6 +99,7 @@ class Home : AppCompatActivity() {
                 }
                 R.id.ranking -> {
                     replaceFragment(rankingFragment)
+                    rankingViewModel.getRanking()
                 }
             }
             true

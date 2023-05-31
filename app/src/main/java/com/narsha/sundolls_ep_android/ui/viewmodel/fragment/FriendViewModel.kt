@@ -7,10 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.narsha.sundolls_ep_android.App
 import com.narsha.sundolls_ep_android.data.local.retrofit.ClientRetrofit
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.friendLookupResponse.FriendLookupResponse
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,7 +18,7 @@ class FriendViewModel(): ViewModel() {
         get() = _recyclerView
 
     fun getFriend(){
-        ClientRetrofit.api.friendLookup(App.prefs.access_token.toString()).enqueue(object : Callback<FriendLookupResponse>{
+        ClientRetrofit.api.friendLookup(App.prefs.accessToken.toString()).enqueue(object : Callback<FriendLookupResponse>{
             override fun onResponse(
                 call: Call<FriendLookupResponse>,
                 response: Response<FriendLookupResponse>

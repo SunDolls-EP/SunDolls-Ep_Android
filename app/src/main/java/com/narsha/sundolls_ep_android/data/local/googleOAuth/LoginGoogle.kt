@@ -50,8 +50,8 @@ class LoginGoogle() {
             ) {
                 if (response.isSuccessful) {
                     val data = response.headers().get("authorization")!!
-                    App.prefs.access_token = data
-                    Log.d("access_token", App.prefs.access_token.toString())
+                    App.prefs.accessToken = data
+                    Log.d("access_token", App.prefs.accessToken.toString())
                     Log.d("User",response.body().toString())
                     loginOAuthViewModel.nextActivity()
                 } else {

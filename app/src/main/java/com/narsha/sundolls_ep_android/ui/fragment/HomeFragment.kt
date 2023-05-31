@@ -51,9 +51,9 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        timeSeconds = App.prefs.time
         UITimer()
         Log.d("라이프","onCreateView")
-        timeSeconds = App.prefs.time
 
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -71,6 +71,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        App.prefs.time = timeSeconds
         UITimer()
 
         Log.d("라이프","onViewCreated")
