@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:text="-비회원으로 들어가기-"
             android:textSize="14sp"
-            android:textColor="#a0000000"
+            android:textColor="#000000"
             android:fontFamily="@font/pretendard_bold"
             android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
