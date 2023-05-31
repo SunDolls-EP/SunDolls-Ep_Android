@@ -1,27 +1,30 @@
 package com.narsha.sundolls_ep_android.ui.activity
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.Gravity
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
+import com.google.android.material.navigation.NavigationBarView
 import com.narsha.sundolls_ep_android.R
 import com.narsha.sundolls_ep_android.databinding.ActivityHomeBinding
-import com.narsha.sundolls_ep_android.databinding.FragmentHomeBinding
+import com.narsha.sundolls_ep_android.ui.fragment.CalendarFragment
 import com.narsha.sundolls_ep_android.ui.fragment.FriendFragment
 import com.narsha.sundolls_ep_android.ui.fragment.HomeFragment
 import com.narsha.sundolls_ep_android.ui.fragment.RankingFragment
+import com.narsha.sundolls_ep_android.ui.fragment.SettingFragment
 import com.narsha.sundolls_ep_android.ui.viewmodel.activity.HomeViewModel
 import com.narsha.sundolls_ep_android.ui.viewmodel.fragment.FriendViewModel
 import com.narsha.sundolls_ep_android.ui.viewmodel.fragment.RankingViewModel
-import kotlin.concurrent.timer
+
 
 class Home : AppCompatActivity() {
 
@@ -43,6 +46,8 @@ class Home : AppCompatActivity() {
     private val friendFragment = FriendFragment()
     private val homeFragment = HomeFragment()
     private val rankingFragment = RankingFragment()
+    private val settingFragment = SettingFragment()
+    private val calendarFragment = CalendarFragment()
 
 
     private val viewModel: HomeViewModel by lazy { ViewModelProvider(this)[HomeViewModel::class.java] }
@@ -64,9 +69,6 @@ class Home : AppCompatActivity() {
         val rankingViewModel = RankingViewModel()
         binding.bottomNavigation.itemIconTintList = null
 
-
-
-
         val colorStateList = ColorStateList.valueOf(Color.TRANSPARENT)
 
         binding.bottomNavigation.itemTextColor = ColorStateList(
@@ -81,10 +83,6 @@ class Home : AppCompatActivity() {
         )
 
         binding.bottomNavigation.itemIconTintList = colorStateList
-        binding.bottomNavigation.itemRippleColor = null
-        binding.bottomNavigation.itemBackground = null
-
-
 
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
@@ -101,6 +99,12 @@ class Home : AppCompatActivity() {
                     replaceFragment(rankingFragment)
                     rankingViewModel.getRanking()
                 }
+                R.id.calendar -> {
+                    replaceFragment(calendarFragment)
+                }
+                R.id.setting -> {
+                    replaceFragment(settingFragment)
+                }
             }
             true
         }
@@ -116,6 +120,13 @@ class Home : AppCompatActivity() {
         fragmentManager.beginTransaction()
             .replace(R.id.frame, fragment)
             .commit()
+    }
+
+    @SuppressLint("RestrictedApi")
+    fun removeNavigationShiftMode(view: BottomNavigationView) {
+        val menuView = view.getChildAt(0) as BottomNavigationMenuView
+        menuView.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
+        menuView.buildMenuView()
     }
 
 
