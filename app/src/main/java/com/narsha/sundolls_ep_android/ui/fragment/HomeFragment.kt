@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -76,6 +77,7 @@ class HomeFragment : Fragment() {
 
         Log.d("라이프","onViewCreated")
 
+        binding.DrawerLayout.closeDrawer(Gravity.LEFT)
         viewModel.onclickDrawerLayout.observe(viewLifecycleOwner) {
             viewModel.onclickDrawerOpen(binding)
         }
@@ -97,8 +99,14 @@ class HomeFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        binding.DrawerLayout.closeDrawer(Gravity.LEFT)
+        super.onResume()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.DrawerLayout.closeDrawer(Gravity.LEFT)
         App.prefs.time = timeSeconds
         Log.d("라이프","onDestroyView")
     }
