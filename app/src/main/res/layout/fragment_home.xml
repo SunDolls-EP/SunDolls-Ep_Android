@@ -74,22 +74,30 @@
             <!--        app:cpb_start_angle : 진행 막대의 시작 각도를 나타내는 변수입니다. 기본 값은 위쪽 방향인 0도입니다.-->
             <!--        app:cpb_progress_direction : 진행 막대의 진행 방향을 나타내는 변수입니다. 오른쪽에서 왼쪽 또는 왼쪽에서 오른쪽 중 하나의 값을 가질 수 있습니다.-->
 
+
             <com.mikhaellopez.circularprogressbar.CircularProgressBar
                 android:id="@+id/Check_Time"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:layout_marginTop="160dp"
-                app:cpb_background_progressbar_color="#858585"
-                app:cpb_progress="40"
-                app:cpb_progressbar_color="#2A2A2A"
-                app:cpb_progressbar_width="7dp"
-                app:cpb_background_progressbar_width="7dp"
-                app:cpb_round_border="false"
+                android:layout_marginTop="152dp"
                 android:elevation="100dp"
+                app:cpb_background_progressbar_color="#ff7612"
+                app:cpb_background_progressbar_width="7dp"
+                app:cpb_progress="40"
+                app:cpb_progressbar_color="#000000"
+                app:cpb_progressbar_width="7dp"
+                app:cpb_round_border="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <View
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:background="@drawable/background_profressbar"
+                app:layout_constraintBottom_toBottomOf="@+id/Check_Time"
+                app:layout_constraintEnd_toEndOf="@+id/Check_Time"
+                app:layout_constraintStart_toStartOf="@+id/Check_Time" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/Target_Time"
@@ -112,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gangwon_education_saeum"
                 android:text="00:00"
-                android:textColor="@color/white"
+                android:textColor="#FF7612"
                 android:textSize="36sp"
                 app:layout_constraintEnd_toEndOf="@+id/Check_Time"
                 app:layout_constraintStart_toStartOf="@+id/Check_Time"
