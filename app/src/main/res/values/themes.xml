@@ -7,4 +7,8 @@
     </style>
 
     <style name="Theme.SunDollsEp_Android" parent="Base.Theme.SunDollsEp_Android" />
+    <style name="Font" >
+        <item name="fontFamily">@font/gangwon_education_saeum</item>
+        <item name="android:textSize">20sp</item>
+    </style>
 </resources>
