@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/drawerlayout_button"
+                android:src="@drawable/icon_drawerlayout_button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:onClick="@{() -> home.onclickDrawerLayout()}"/>
@@ -140,28 +140,29 @@
             </View>
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/stop"
+                android:id="@+id/icon_stopNplay"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginBottom="20dp"
-                android:src="@drawable/icon_stop"
-                android:onClick="@{() -> home.timer()}"
+                android:src="@drawable/icon_play"
+                android:onClick="@{() -> home.timerStatus()}"
                 app:layout_constraintBottom_toBottomOf="@+id/setting"
                 app:layout_constraintEnd_toStartOf="@+id/view"
                 app:layout_constraintStart_toStartOf="@+id/setting"
                 app:layout_constraintTop_toTopOf="@+id/setting" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_stopNplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gangwon_education_saeum"
-                android:text="STOP"
+                android:text="START"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/setting"
                 app:layout_constraintEnd_toStartOf="@+id/view"
                 app:layout_constraintStart_toStartOf="@+id/setting"
-                app:layout_constraintTop_toBottomOf="@+id/stop" />
+                app:layout_constraintTop_toBottomOf="@+id/icon_stopNplay" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/view"

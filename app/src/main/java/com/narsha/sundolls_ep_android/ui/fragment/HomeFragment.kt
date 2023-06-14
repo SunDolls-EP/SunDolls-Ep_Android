@@ -14,6 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.narsha.sundolls_ep_android.App
+import com.narsha.sundolls_ep_android.R
 import com.narsha.sundolls_ep_android.databinding.FragmentHomeBinding
 import com.narsha.sundolls_ep_android.databinding.NavigationBeaderBinding
 import com.narsha.sundolls_ep_android.ui.viewmodel.fragment.HomeViewModel
@@ -40,20 +41,16 @@ class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
     lateinit var recyclerViewBinding: NavigationBeaderBinding
 
-    private val handler = Handler(Looper.getMainLooper())
-    private var timer: Timer? = null
-    private var timerTask: TimerTask? = null
+    private var timerStatus: Boolean = false
 
-    private var timeSeconds = 0L
 
-    private var timeStatus = false
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        timeSeconds = App.prefs.time
-        UITimer()
+
         Log.d("라이프","onCreateView")
 
 
@@ -72,8 +69,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        App.prefs.time = timeSeconds
-        UITimer()
+
 
         Log.d("라이프","onViewCreated")
 
@@ -82,21 +78,38 @@ class HomeFragment : Fragment() {
             viewModel.onclickDrawerOpen(binding)
         }
 
+        viewModel.timer.observe(viewLifecycleOwner){
+            Log.d("시간",it.toString())
+            val minute = String.format("%02d", it / 60)
+            val second = String.format("%02d", it % 60)
+            binding.TargetTime.text = "$minute:$second"
+            App.prefs.time = it
+        }
+
         viewModel.timerState.observe(viewLifecycleOwner){
-            if(!timeStatus){
-                startTimer()
-                Log.d("상태",timeStatus.toString())
-                timeStatus = true
+            //Start, STOP
+            if(it){
+                binding.iconStopNplay.setImageResource(R.drawable.icon_stop)
+                binding.textStopNplay.text = "STOP"
             } else {
-                stopTimer()
-                Log.d("상태",timeStatus.toString())
-                timeStatus = false
+                binding.iconStopNplay.setImageResource(R.drawable.icon_play)
+                binding.textStopNplay.text = "START"
             }
         }
 
         viewModel.timerSkip.observe(viewLifecycleOwner){
-            skipTimer()
+            //Skip
+            timerStatus = false
         }
+
+        viewModel.onclickAddTODO.observe(viewLifecycleOwner){
+
+        }
+
+        viewModel.todoListData.observe(viewLifecycleOwner){
+
+        }
+
     }
 
     override fun onResume() {
@@ -107,54 +120,9 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         binding.DrawerLayout.closeDrawer(Gravity.LEFT)
-        App.prefs.time = timeSeconds
         Log.d("라이프","onDestroyView")
     }
 
-    private fun startTimer(){
-        timer = Timer()
-        timerTask = object :TimerTask(){
-            override fun run() {
-                timeSeconds++
-                handler.post { updateTimerText() }
-            }
-        }
-        timer?.scheduleAtFixedRate(timerTask, 1000, 1000)
-    }
-
-    private fun stopTimer() {
-        App.prefs.time = timeSeconds
-        timer?.cancel()
-        timer?.purge()
-        timer = null
-        timerTask = null
-        handler.post { updateTimerText() }
-    }
-
-    private fun skipTimer() {
-        timer?.cancel()
-        timer?.purge()
-        timer = null
-        timerTask = null
-        timeSeconds = 0
-        App.prefs.time = 0
-        handler.post { updateTimerText() }
-    }
-
-
-    private fun UITimer(){
-        timerTask = object : TimerTask(){
-            override fun run() {
-                handler.post { updateTimerText() }
-            }
-        }
-    }
-
-    private fun updateTimerText() {
-        val minutes = timeSeconds / 60
-        val seconds = timeSeconds % 60
-        binding.TargetTime.text = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds)
-    }
 
 
 }
