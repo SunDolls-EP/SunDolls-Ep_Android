@@ -18,6 +18,8 @@ import com.narsha.sundolls_ep_android.R
 import com.narsha.sundolls_ep_android.databinding.FragmentHomeBinding
 import com.narsha.sundolls_ep_android.databinding.NavigationBeaderBinding
 import com.narsha.sundolls_ep_android.ui.viewmodel.fragment.HomeViewModel
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.Locale
 import java.util.Timer
 import java.util.TimerTask
@@ -44,7 +46,9 @@ class HomeFragment : Fragment() {
     private var timerStatus: Boolean = false
 
 
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -85,6 +89,10 @@ class HomeFragment : Fragment() {
         }
 
         viewModel.timerState.observe(viewLifecycleOwner){
+            val currentDateTime = LocalDateTime.now()
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
+            val formattedDateTime = currentDateTime.format(formatter)
+
             if(it){
                 binding.iconStopNplay.setImageResource(R.drawable.icon_stop)
                 binding.textStopNplay.text = "STOP"

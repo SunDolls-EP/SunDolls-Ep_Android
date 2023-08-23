@@ -34,7 +34,7 @@ class HomeViewModel : ViewModel() {
     val timer: LiveData<Long>
         get() = _timer
 
-    private val _timerState = MutableLiveData<Boolean>()
+    private val _timerState = MutableLiveData<Boolean>(false)
     val timerState: LiveData<Boolean>
         get() = _timerState
 
