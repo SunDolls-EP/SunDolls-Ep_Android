@@ -12,6 +12,9 @@
         android:name="com.google.android.gms.auth.api.credentials.google_sign_in_api"
         android:resource="@string/google_sign_in_api_json" />
 
+    <meta-data
+        android:name="com.kakao.sdk.AppKey" android:value="${kakao_Sdk_Appkey}"/>
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -25,10 +28,11 @@
         android:theme="@style/Theme.SunDollsEp_Android"
         android:usesCleartextTraffic="true"
         tools:targetApi="s">
+
         <service
             android:name=".server.TimerService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="false"></service>
 
         <activity
             android:name=".ui.activity.Home"
@@ -39,8 +43,9 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <data android:host="oauth"
+                    android:scheme="@string/kakao_reactive_app_key" />
             </intent-filter>
         </activity>
 
