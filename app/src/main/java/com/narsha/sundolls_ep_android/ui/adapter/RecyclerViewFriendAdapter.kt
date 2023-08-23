@@ -5,9 +5,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.narsha.sundolls_ep_android.R
-import com.narsha.sundolls_ep_android.data.local.retrofit.response.friendLookupResponse.FriendLookupResponse
+import com.narsha.sundolls_ep_android.data.network.retrofit.response.friendLookupResponse.FriendLookupResponse
 import com.narsha.sundolls_ep_android.databinding.RecyclerviewItemFriendBinding
-import com.narsha.sundolls_ep_android.databinding.RecyclerviewItemTodoBinding
 
 class RecyclerViewFriendAdapter(var data: FriendLookupResponse): RecyclerView.Adapter<RecyclerViewFriendAdapter.MyViewHolder>() {
     inner class MyViewHolder(private val binding: RecyclerviewItemFriendBinding): RecyclerView.ViewHolder(binding.root){

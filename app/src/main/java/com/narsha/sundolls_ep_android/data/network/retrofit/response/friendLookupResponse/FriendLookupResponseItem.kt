@@ -1,4 +1,4 @@
-package com.narsha.sundolls_ep_android.data.local.retrofit.response.friendLookupResponse
+package com.narsha.sundolls_ep_android.data.network.retrofit.response.friendLookupResponse
 
 import com.google.gson.annotations.SerializedName
 

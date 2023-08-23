@@ -1,4 +1,4 @@
-package com.narsha.sundolls_ep_android.data.local.googleOAuth
+package com.narsha.sundolls_ep_android.data.network.googleOAuth
 
 import android.util.Log
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -8,8 +8,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.narsha.sundolls_ep_android.App
-import com.narsha.sundolls_ep_android.data.local.retrofit.ClientRetrofit
-import com.narsha.sundolls_ep_android.data.local.retrofit.response.googleLoginResponse.GoogleLoginResponse
+import com.narsha.sundolls_ep_android.data.network.retrofit.ClientRetrofit
+import com.narsha.sundolls_ep_android.data.network.retrofit.response.googleLoginResponse.GoogleLoginResponse
 import com.narsha.sundolls_ep_android.ui.activity.Login
 import com.narsha.sundolls_ep_android.ui.viewmodel.activity.LoginOAuthViewModel
 import retrofit2.Call
@@ -19,8 +19,6 @@ import retrofit2.Response
 class LoginGoogle() {
 
     private val loginOAuthViewModel = LoginOAuthViewModel()
-
-
 
     fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {

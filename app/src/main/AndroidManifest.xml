@@ -32,6 +32,7 @@
 
         <activity
             android:name=".ui.activity.Home"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false"></activity>
         <activity
             android:name=".ui.activity.Login"
