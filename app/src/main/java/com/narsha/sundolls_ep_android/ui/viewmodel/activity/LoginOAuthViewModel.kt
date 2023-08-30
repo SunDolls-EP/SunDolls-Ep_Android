@@ -10,24 +10,31 @@ import com.narsha.sundolls_ep_android.ui.activity.Login
 
 class LoginOAuthViewModel: ViewModel() {
 
-    private val _registration = MutableLiveData<Boolean>()
-    val registration: LiveData<Boolean>
-        get() = _registration
-    private val _non_registration = MutableLiveData<Boolean>()
-    val non_registration: LiveData<Boolean>
-        get() = _non_registration
+    private val _googleRegistration = MutableLiveData<Boolean>()
+    private val _kakaoRegistration = MutableLiveData<Boolean>()
+    val googleRegistration: LiveData<Boolean>
+        get() = _googleRegistration
+    val kakaoRegistration: LiveData<Boolean>
+        get() = _kakaoRegistration
+    private val _nonRegistration = MutableLiveData<Boolean>()
+    val nonRegistration: LiveData<Boolean>
+        get() = _nonRegistration
 
     fun nextActivity() {
-        val intent = Intent(Login.ApplicationContext(), Home::class.java)
-        Login.ApplicationContext().startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK))
+        val intent = Intent(Login.applicationContext(), Home::class.java)
+        Login.applicationContext().startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK))
     }
 
-    fun non_registration(){
-        _non_registration.value = true
+    fun nonRegistration(){
+        _nonRegistration.value = true
     }
 
-    fun registration() {
-        _registration.value = true
+    fun googleRegistration() {
+        _googleRegistration.value = true
+    }
+
+    fun kakaoRegistration(){
+        _kakaoRegistration.value = true
     }
 
 }
