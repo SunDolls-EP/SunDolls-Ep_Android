@@ -8,8 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.kakao.sdk.common.KakaoSdk
+import com.kakao.sdk.common.util.Utility
 import com.narsha.sundolls_ep_android.R
-import com.narsha.sundolls_ep_android.data.network.googleOAuth.LoginGoogle
+import com.narsha.sundolls_ep_android.data.network.oAuth.google.LoginGoogle
+import com.narsha.sundolls_ep_android.data.network.oAuth.kakao.KakaoLogin
 import com.narsha.sundolls_ep_android.databinding.ActivityLoginOauthBinding
 import com.narsha.sundolls_ep_android.ui.viewmodel.activity.LoginOAuthViewModel
 
@@ -17,7 +20,7 @@ class Login : AppCompatActivity() {
 
     companion object{
         lateinit var instance: Login
-        fun ApplicationContext() : Context {
+        fun applicationContext() : Context {
             return instance.applicationContext
         }
     }
@@ -34,6 +37,7 @@ class Login : AppCompatActivity() {
 
     private val loginGoogle = LoginGoogle()
     private val loginOAuthViewModel = LoginOAuthViewModel()
+    private val kakaoLogin = KakaoLogin()
 
 
 
@@ -53,12 +57,19 @@ class Login : AppCompatActivity() {
         binding.login = viewModel
         binding.lifecycleOwner = this
 
-        viewModel.registration.observe(this) {
+        KakaoSdk.init(this, getString(R.string.kakao_reactive_app_key))
+
+        viewModel.googleRegistration.observe(this) {
             val signInIntent = loginGoogle.googleSignInClient.signInIntent
             signInResultLauncher.launch(signInIntent)
         }
 
-        viewModel.non_registration.observe(this){
+        viewModel.kakaoRegistration.observe(this){
+            Log.d("카카오", "keyhash : ${Utility.getKeyHash(this)}")
+            kakaoLogin.kakaoLogin()
+        }
+
+        viewModel.nonRegistration.observe(this){
             loginOAuthViewModel.nextActivity()
             finish()
         }
@@ -70,7 +81,6 @@ class Login : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
     }
 
     override fun onPause() {
@@ -84,6 +94,7 @@ class Login : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
     }
+
 
 
 }
