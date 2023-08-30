@@ -3,9 +3,12 @@
     <string name="api_key">AIzaSyA9niSkZLgbFTNg-ruGy0Z1szitP1BiGBA</string>
     <string name="client_id">224818744622-c01jteud2afgr9o296c3p4h0p42hmar7.apps.googleusercontent.com</string>
     <string name="client_secret">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</string>
+    <string name="kakao_reactive_app_key">350a491b8bb44342fefd49d85bb500ad</string>
 
     <string name="google_sign_in_api_json">client_secret_224818744622-d1tj3rqr6kc84533lk9lbdmja1kjqi65.apps.googleusercontent.com</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="notification_channel_id">0</string>
+    <string name="notification_channel_name">TimerAlarm</string>
 
 </resources>

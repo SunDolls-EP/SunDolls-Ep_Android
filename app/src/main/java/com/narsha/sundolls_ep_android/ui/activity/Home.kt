@@ -102,9 +102,6 @@ class Home : AppCompatActivity() {
                 R.id.calendar -> {
                     replaceFragment(calendarFragment)
                 }
-                R.id.setting -> {
-                    replaceFragment(settingFragment)
-                }
             }
             true
         }
