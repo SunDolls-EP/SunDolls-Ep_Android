@@ -1,10 +1,14 @@
 package com.narsha.sundolls_ep_android.ui.activity
 
 import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -66,6 +70,8 @@ class Home : AppCompatActivity() {
         binding.homeViewModel = viewModel
         binding.lifecycleOwner = this
         homeViewModel = HomeViewModel()
+        createNotificationChannel(getString(R.string.notification_channel_id), getString(R.string.notification_channel_name))
+
         val rankingViewModel = RankingViewModel()
         binding.bottomNavigation.itemIconTintList = null
 
@@ -124,6 +130,15 @@ class Home : AppCompatActivity() {
         val menuView = view.getChildAt(0) as BottomNavigationMenuView
         menuView.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
         menuView.buildMenuView()
+    }
+
+    private fun createNotificationChannel(id: String, name: String){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            Log.d("체크","Build.VERSION.SDK_INT >= Build.VERSION_CODES.O")
+            val channel = NotificationChannel(id, name, NotificationManager.IMPORTANCE_LOW)
+            val notificationManager= getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
     }
 
 

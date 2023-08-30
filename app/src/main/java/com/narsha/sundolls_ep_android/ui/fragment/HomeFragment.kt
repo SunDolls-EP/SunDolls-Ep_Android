@@ -1,6 +1,8 @@
 package com.narsha.sundolls_ep_android.ui.fragment
 
+import android.app.Notification
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -128,6 +130,21 @@ class HomeFragment : Fragment() {
         Log.d("라이프","onDestroyView")
     }
 
+
+    private fun notification() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            //more than Oreo
+            val builder = Notification.Builder(context, getString(R.string.notification_channel_id))
+                .setContentTitle("시간이 흘러갑니다....")
+                .setContentText("${App.prefs.time}")
+
+        } else {
+            //less than Oreo
+
+        }
+
+
+    }
 
 
 }
