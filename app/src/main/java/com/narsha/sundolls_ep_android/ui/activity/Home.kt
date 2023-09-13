@@ -91,8 +91,7 @@ class Home : AppCompatActivity() {
                     replaceFragment(friendFragment)
                     //친구 불러오기
                     fragmentViewModel.getFriend()
-                }
-                R.id.home ->{
+                }R.id.home ->{
                     replaceFragment(homeFragment)
                 }
                 R.id.ranking -> {
