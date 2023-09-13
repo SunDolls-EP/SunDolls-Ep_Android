@@ -74,129 +74,194 @@
             <!--        app:cpb_start_angle : 진행 막대의 시작 각도를 나타내는 변수입니다. 기본 값은 위쪽 방향인 0도입니다.-->
             <!--        app:cpb_progress_direction : 진행 막대의 진행 방향을 나타내는 변수입니다. 오른쪽에서 왼쪽 또는 왼쪽에서 오른쪽 중 하나의 값을 가질 수 있습니다.-->
 
-
-            <com.mikhaellopez.circularprogressbar.CircularProgressBar
-                android:id="@+id/Check_Time"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:layout_marginTop="152dp"
-                android:elevation="100dp"
-                app:cpb_background_progressbar_color="#ff7612"
-                app:cpb_background_progressbar_width="7dp"
-                app:cpb_progress="40"
-                app:cpb_progressbar_color="#000000"
-                app:cpb_progressbar_width="7dp"
-                app:cpb_round_border="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_marginTop="100dp"
                 android:background="@drawable/background_profressbar"
-                app:layout_constraintBottom_toBottomOf="@+id/Check_Time"
-                app:layout_constraintEnd_toEndOf="@+id/Check_Time"
-                app:layout_constraintStart_toStartOf="@+id/Check_Time" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/Target_Time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/gangwon_education_saeum"
-                android:text="00:00"
-                android:textColor="@color/white"
-                android:textSize="96sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/Check_Time"
-                app:layout_constraintEnd_toEndOf="@+id/Check_Time"
-                app:layout_constraintStart_toStartOf="@+id/Check_Time"
-                app:layout_constraintTop_toTopOf="@+id/Check_Time" />
-
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/Current_Time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/gangwon_education_saeum"
-                android:text="00:00"
-                android:textColor="#FF7612"
-                android:textSize="36sp"
-                app:layout_constraintEnd_toEndOf="@+id/Check_Time"
-                app:layout_constraintStart_toStartOf="@+id/Check_Time"
-                app:layout_constraintTop_toTopOf="@+id/Target_Time" />
-
-            <View
-                android:id="@+id/setting"
-                android:layout_width="310dp"
-                android:layout_height="84dp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/background_setting"
-                android:layout_marginTop="60dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Check_Time">
-            </View>
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/icon_stopNplay"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="20dp"
-                android:src="@drawable/icon_play"
-                android:onClick="@{() -> home.timerStatus()}"
-                app:layout_constraintBottom_toBottomOf="@+id/setting"
-                app:layout_constraintEnd_toStartOf="@+id/view"
-                app:layout_constraintStart_toStartOf="@+id/setting"
-                app:layout_constraintTop_toTopOf="@+id/setting" />
+                <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                    android:id="@+id/Check_Time"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:elevation="100dp"
+                    app:cpb_background_progressbar_color="#ff7612"
+                    app:cpb_background_progressbar_width="7dp"
+                    app:cpb_progress="40"
+                    app:cpb_progressbar_color="#ADADAD"
+                    app:cpb_progressbar_width="7dp"
+                    app:cpb_round_border="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_stopNplay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/gangwon_education_saeum"
-                android:text="START"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/setting"
-                app:layout_constraintEnd_toStartOf="@+id/view"
-                app:layout_constraintStart_toStartOf="@+id/setting"
-                app:layout_constraintTop_toBottomOf="@+id/icon_stopNplay" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/Target_Time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gangwon_education_saeum"
+                    android:text="00:00"
+                    android:textColor="@color/white"
+                    android:textSize="96sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/Check_Time"
+                    app:layout_constraintEnd_toEndOf="@+id/Check_Time"
+                    app:layout_constraintStart_toStartOf="@+id/Check_Time"
+                    app:layout_constraintTop_toTopOf="@+id/Check_Time" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/view"
-                android:layout_width="1dp"
-                android:layout_height="60dp"
-                android:src="@drawable/line"
-                app:layout_constraintBottom_toBottomOf="@+id/setting"
-                app:layout_constraintEnd_toEndOf="@+id/setting"
-                app:layout_constraintStart_toStartOf="@+id/setting"
-                app:layout_constraintTop_toTopOf="@+id/setting" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/skip"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="20dp"
-                android:src="@drawable/icon_skip"
-                android:onClick="@{() -> home.skip()}"
-                app:layout_constraintBottom_toBottomOf="@+id/setting"
-                app:layout_constraintEnd_toEndOf="@+id/setting"
-                app:layout_constraintStart_toEndOf="@+id/view"
-                app:layout_constraintTop_toTopOf="@+id/setting" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/Current_Time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gangwon_education_saeum"
+                    android:text="00:00"
+                    android:textColor="#FF7612"
+                    android:textSize="36sp"
+                    app:layout_constraintEnd_toEndOf="@+id/Check_Time"
+                    app:layout_constraintStart_toStartOf="@+id/Check_Time"
+                    app:layout_constraintTop_toTopOf="@+id/Target_Time" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/gangwon_education_saeum"
-                android:text="SKIP"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/setting"
-                app:layout_constraintEnd_toEndOf="@+id/setting"
-                app:layout_constraintStart_toEndOf="@+id/view"
-                app:layout_constraintTop_toBottomOf="@+id/skip" />
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorTransparent"
+                    android:src="@drawable/icon_play"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Target_Time" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gangwon_edu_saeeum"
+                    android:text="주간 랭킹"
+                    android:textColor="#FFFFFF"
+                    android:textSize="36sp"
+                    app:layout_constraintBottom_toTopOf="@+id/linearLayoutCompat3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="100dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/appCompatImageView5"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView4" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/gangwon_edu_saeeum"
+                        android:text="이혜성"
+                        android:textColor="@color/white"
+                        android:textSize="28sp"
+                        app:layout_constraintEnd_toEndOf="@+id/appCompatImageView5"
+                        app:layout_constraintStart_toStartOf="@+id/appCompatImageView5"
+                        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView5" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@+id/linearLayoutCompat3"
+                    app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat3"
+                    app:layout_constraintTop_toTopOf="@+id/linearLayoutCompat3">
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView4" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/gangwon_edu_saeeum"
+                        android:text="이혜성"
+                        android:textColor="@color/white"
+                        android:textSize="28sp"
+                        app:layout_constraintEnd_toEndOf="@+id/appCompatImageView5"
+                        app:layout_constraintStart_toStartOf="@+id/appCompatImageView5"
+                        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView5" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/linearLayoutCompat3"
+                    app:layout_constraintEnd_toStartOf="@+id/linearLayoutCompat3"
+                    app:layout_constraintTop_toTopOf="@+id/linearLayoutCompat3">
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView4" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/gangwon_edu_saeeum"
+                        android:text="이혜성"
+                        android:textColor="@color/white"
+                        android:textSize="28sp"
+                        app:layout_constraintEnd_toEndOf="@+id/appCompatImageView5"
+                        app:layout_constraintStart_toStartOf="@+id/appCompatImageView5"
+                        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView5" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
