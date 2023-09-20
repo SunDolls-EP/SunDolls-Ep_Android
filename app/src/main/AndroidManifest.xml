@@ -26,7 +26,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="s">
         <service
-            android:name=".server.TimerService"
+            android:name=".service.TimerService"
             android:enabled="true"
             android:exported="true"></service>
 
