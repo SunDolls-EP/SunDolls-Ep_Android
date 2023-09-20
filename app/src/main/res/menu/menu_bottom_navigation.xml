@@ -5,21 +5,18 @@
 
     <item
         android:id="@+id/novel"
+        android:icon="@drawable/selector_novel_icon"
         android:title="소설"
         app:showAsAction="withText"/>
 
     <item
-        android:id="@+id/ranking"
-        android:title="랭킹"
-        app:showAsAction="withText"/>
-
-    <item
         android:id="@+id/home"
+        android:icon="@drawable/selector_home_icon"
         android:title="홈"
         app:showAsAction="withText"/>
 
     <item
-        android:id="@+id/calendar"
-        android:title="달력"
+        android:id="@+id/menu"
+        android:title="메뉴"
         app:showAsAction="withText"/>
 </menu>
