@@ -1,4 +1,4 @@
-package com.narsha.sundolls_ep_android.data.network.googleOAuth
+package com.narsha.sundolls_ep_android.data.network.oauth.google
 
 import android.util.Log
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -72,7 +72,7 @@ class LoginGoogle() {
 
 
     val googleSignInClient: GoogleSignInClient by lazy {
-        GoogleSignIn.getClient(Login.ApplicationContext(), gso)
+        GoogleSignIn.getClient(Login.applicationContext(), gso)
     }
 
     fun Logout(){

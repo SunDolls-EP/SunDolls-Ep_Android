@@ -1,14 +1,10 @@
-package com.narsha.sundolls_ep_android.data.network.oAuth.kakao
+package com.narsha.sundolls_ep_android.data.network.oauth.kakao
 
-import android.graphics.drawable.Drawable
 import android.util.Log
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.Target
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
-import com.kakao.sdk.user.model.User
 import com.narsha.sundolls_ep_android.ui.activity.Login
 import com.narsha.sundolls_ep_android.ui.viewmodel.activity.LoginOAuthViewModel
 
@@ -46,7 +42,7 @@ class KakaoLogin {
                     // 카카오톡에 연결된 카카오계정이 없는 경우, 카카오계정으로 로그인 시도
                     UserApiClient.instance.loginWithKakaoAccount(context, callback = callback)
                 } else if (token != null) {
-                    Log.i("카카오", "카카오톡으로 로그인 성공 ${token.idToken}")
+                    Log.i("카카오", "카카오톡으로 로그인 성공 ${token.accessToken}")
                     loginOAuthViewModel.nextActivity()
                 }
             }
@@ -54,6 +50,5 @@ class KakaoLogin {
             UserApiClient.instance.loginWithKakaoAccount(context, callback = callback)
         }
     }
-
 
 }
