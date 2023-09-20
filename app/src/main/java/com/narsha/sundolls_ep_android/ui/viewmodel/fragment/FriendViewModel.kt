@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.narsha.sundolls_ep_android.App
-import com.narsha.sundolls_ep_android.data.local.retrofit.ClientRetrofit
-import com.narsha.sundolls_ep_android.data.local.retrofit.response.friendLookupResponse.FriendLookupResponse
+import com.narsha.sundolls_ep_android.data.network.retrofit.ClientRetrofit
+import com.narsha.sundolls_ep_android.data.network.retrofit.response.friendLookupResponse.FriendLookupResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

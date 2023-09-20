@@ -1,4 +1,4 @@
-package com.narsha.sundolls_ep_android.data.local.retrofit
+package com.narsha.sundolls_ep_android.data.network.retrofit
 
 import okhttp3.Interceptor
 import okhttp3.Response

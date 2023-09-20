@@ -74,7 +74,6 @@ class HomeViewModel : ViewModel() {
             handler.postDelayed(runnable, 1000) // 1초마다 실행
             _timerState.value = true
         }
-
     }
 
     fun skip(){

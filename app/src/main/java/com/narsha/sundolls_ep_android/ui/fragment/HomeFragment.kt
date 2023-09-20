@@ -71,8 +71,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        Log.d("라이프","onViewCreated")
-
         binding.DrawerLayout.closeDrawer(Gravity.LEFT)
         viewModel.onclickDrawerLayout.observe(viewLifecycleOwner) {
             viewModel.onclickDrawerOpen(binding)
@@ -87,7 +85,6 @@ class HomeFragment : Fragment() {
         }
 
         viewModel.timerState.observe(viewLifecycleOwner){
-            //Start, STOP
             if(it){
                 binding.iconStopNplay.setImageResource(R.drawable.icon_stop)
                 binding.textStopNplay.text = "STOP"

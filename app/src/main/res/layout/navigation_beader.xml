@@ -3,11 +3,13 @@
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
         <variable
             name="DrawerLayout"
             type="com.narsha.sundolls_ep_android.ui.viewmodel.fragment.HomeViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -63,17 +65,26 @@
             app:layout_constraintStart_toStartOf="@+id/constraintLayout"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addTodo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/gangwon_education_saeum"
+            android:onClick="@{() -> DrawerLayout.addTODO()}"
             android:text="오늘 할일 추가"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="@+id/recycler_TODO"
             app:layout_constraintTop_toBottomOf="@+id/recycler_TODO" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/set_TODO"
+            android:hint="할일 작성"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/addTodo"
+            app:layout_constraintTop_toBottomOf="@+id/addTodo" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

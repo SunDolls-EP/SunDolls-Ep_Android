@@ -11,18 +11,16 @@ import com.narsha.sundolls_ep_android.ui.activity.Login
 class LoginOAuthViewModel: ViewModel() {
 
     private val _registration = MutableLiveData<Boolean>()
+    val registration: LiveData<Boolean>
+        get() = _registration
     private val _non_registration = MutableLiveData<Boolean>()
+    val non_registration: LiveData<Boolean>
+        get() = _non_registration
 
     fun nextActivity() {
         val intent = Intent(Login.ApplicationContext(), Home::class.java)
         Login.ApplicationContext().startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK))
     }
-
-    val registration: LiveData<Boolean>
-        get() = _registration
-
-    val non_registration: LiveData<Boolean>
-        get() = _non_registration
 
     fun non_registration(){
         _non_registration.value = true

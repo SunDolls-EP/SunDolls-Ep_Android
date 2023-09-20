@@ -4,9 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.narsha.sundolls_ep_android.data.local.retrofit.response.friendLookupResponse.FriendLookupResponse
 import com.narsha.sundolls_ep_android.ui.adapter.RecyclerViewRankingData
-import kotlin.random.Random
 
 class RankingViewModel:ViewModel() {
 

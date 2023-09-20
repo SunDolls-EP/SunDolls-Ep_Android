@@ -1,4 +1,4 @@
-package com.narsha.sundolls_ep_android.data.local.retrofit
+package com.narsha.sundolls_ep_android.data.network.retrofit
 
 import android.media.session.MediaSession.Token
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.FriendAllowResponse.FriendAllowResponse
@@ -28,6 +28,8 @@ import com.narsha.sundolls_ep_android.data.local.retrofit.response.studyTimeAddR
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.studyTimeInquiryResponse.StudyTimeInquiryResponse
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.userNameChangeResponse.UserNameChangeRequest
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.userNameChangeResponse.UserNameChangeResponse
+import com.narsha.sundolls_ep_android.data.network.retrofit.response.friendLookupResponse.FriendLookupResponse
+import com.narsha.sundolls_ep_android.data.network.retrofit.response.googleLoginResponse.GoogleLoginResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -136,7 +138,7 @@ interface API {
         @Path("noticeId") noticeId: String,
     ): Call<QuestionDeleteResponse>
 
-    @GET("api/QnA/answer/{questionNum}")                //ㄹ쟈루ㅕㅑㄷ룰두ㅑ랴
+    @GET("api/QnA/answer/{questionNum}")                
     fun answerInquiry(
         @Header("Authorization") access: Token,
         @Path("questionNum") questionNum: String,

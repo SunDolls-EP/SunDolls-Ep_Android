@@ -22,6 +22,10 @@ class FriendFragment : Fragment() {
 
     lateinit var binding: FragmentFriendBinding
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,10 +33,10 @@ class FriendFragment : Fragment() {
 
         binding = FragmentFriendBinding.inflate(inflater, container, false)
         binding.ranking = viewModel
-
         binding.lifecycleOwner = this
         binding.friendRecycler.layoutManager = LinearLayoutManager(context)
-        // Inflate the layout for this fragment
+
+
         return binding.root
     }
 

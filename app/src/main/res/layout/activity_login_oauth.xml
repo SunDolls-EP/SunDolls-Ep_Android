@@ -27,10 +27,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/AppleLoginButton"
+            android:id="@+id/KakaoLoginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_apple_login"
+            android:background="@drawable/kakao_login_button"
             android:gravity="center"
             android:textColor="@color/black"
             android:fontFamily="@font/pretendard_bold"
@@ -64,7 +64,7 @@
             android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/AppleLoginButton"
+            app:layout_constraintTop_toBottomOf="@+id/KakaoLoginButton"
             android:onClick="@{() -> Login.non_registration()}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

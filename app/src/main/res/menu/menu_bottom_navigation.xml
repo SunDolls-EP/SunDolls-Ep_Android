@@ -22,9 +22,4 @@
         android:id="@+id/calendar"
         android:title="달력"
         app:showAsAction="withText"/>
-
-    <item
-        android:id="@+id/setting"
-        android:title="설정"
-        app:showAsAction="withText"/>
 </menu>
