@@ -48,6 +48,10 @@ class Home : AppCompatActivity() {
                     replaceFragment(friendFragment)
                     fragmentViewModel.getFriend()
                 }
+
+                R.id.home ->{
+
+                }
                 
                 R.id.home ->{
                     replaceFragment(homeFragment)
