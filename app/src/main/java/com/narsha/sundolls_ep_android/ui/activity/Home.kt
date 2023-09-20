@@ -40,21 +40,13 @@ class Home : AppCompatActivity() {
 
         binding.bnv.setOnItemSelectedListener { item ->
             when (item.itemId) {
+                R.id.ranking -> {
+                    
+                }
                 R.id.novel -> {
-
                 }
 
                 R.id.home -> {
-                    replaceFragment(friendFragment)
-                    fragmentViewModel.getFriend()
-                }
-
-                R.id.home ->{
-
-                }
-                
-                R.id.home ->{
-                    replaceFragment(homeFragment)
                 }
 
                 R.id.menu -> {
