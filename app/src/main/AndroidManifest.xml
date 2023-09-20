@@ -4,6 +4,8 @@
     package="com.narsha.sundolls_ep_android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <meta-data
         android:name="com.google.android.gms.version"
@@ -11,9 +13,6 @@
     <meta-data
         android:name="com.google.android.gms.auth.api.credentials.google_sign_in_api"
         android:resource="@string/google_sign_in_api_json" />
-
-    <meta-data
-        android:name="com.kakao.sdk.AppKey" android:value="${kakao_Sdk_Appkey}"/>
 
     <application
         android:name=".App"
@@ -28,25 +27,33 @@
         android:theme="@style/Theme.SunDollsEp_Android"
         android:usesCleartextTraffic="true"
         tools:targetApi="s">
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <data
+                    android:host="oauth"
+                    android:scheme="@string/kakao_reactive_app_key" />
+            </intent-filter>
+        </activity>
 
         <service
             android:name=".server.TimerService"
             android:enabled="true"
-            android:exported="false"></service>
+            android:exported="false" />
 
         <activity
             android:name=".ui.activity.Home"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"></activity>
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.activity.Login"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <data android:host="oauth"
-                    android:scheme="@string/kakao_reactive_app_key" />
-            </intent-filter>
+            android:exported="false">
+
         </activity>
 
         <meta-data
