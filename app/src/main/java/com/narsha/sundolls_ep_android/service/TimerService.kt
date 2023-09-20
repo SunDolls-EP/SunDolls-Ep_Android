@@ -1,4 +1,4 @@
-package com.narsha.sundolls_ep_android.server
+package com.narsha.sundolls_ep_android.service
 
 import android.app.Service
 import android.content.Intent

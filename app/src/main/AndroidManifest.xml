@@ -27,6 +27,11 @@
         android:theme="@style/Theme.SunDollsEp_Android"
         android:usesCleartextTraffic="true"
         tools:targetApi="s">
+        <service
+            android:name=".service.TimerService"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <activity
             android:name=".ui.activity.SplashActivity"
             android:exported="true" >
