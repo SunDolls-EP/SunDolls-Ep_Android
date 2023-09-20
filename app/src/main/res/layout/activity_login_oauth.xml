@@ -50,8 +50,7 @@
             android:fontFamily="@font/pretendard_bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:onClick="@{() -> Login.registration()}"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/non_member_in_app"
@@ -64,8 +63,7 @@
             android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/KakaoLoginButton"
-            android:onClick="@{() -> Login.non_registration()}"/>
+            app:layout_constraintTop_toBottomOf="@+id/KakaoLoginButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

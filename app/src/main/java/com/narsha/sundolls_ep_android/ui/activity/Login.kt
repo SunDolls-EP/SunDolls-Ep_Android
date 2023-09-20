@@ -8,22 +8,26 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.kakao.sdk.common.KakaoSdk
 import com.narsha.sundolls_ep_android.R
-import com.narsha.sundolls_ep_android.data.network.googleOAuth.LoginGoogle
+import com.narsha.sundolls_ep_android.data.network.oauth.google.LoginGoogle
+import com.narsha.sundolls_ep_android.data.network.oauth.kakao.KakaoLogin
 import com.narsha.sundolls_ep_android.databinding.ActivityLoginOauthBinding
 import com.narsha.sundolls_ep_android.ui.viewmodel.activity.LoginOAuthViewModel
 
 class Login : AppCompatActivity() {
 
-    companion object{
+    companion object {
         lateinit var instance: Login
-        fun ApplicationContext() : Context {
+        fun applicationContext(): Context {
             return instance.applicationContext
         }
     }
-    init{
+
+    init {
         instance = this
     }
+
     private val viewModel: LoginOAuthViewModel by lazy { ViewModelProvider(this)[LoginOAuthViewModel::class.java] }
     private val binding: ActivityLoginOauthBinding by lazy {
         DataBindingUtil.setContentView(
@@ -34,7 +38,7 @@ class Login : AppCompatActivity() {
 
     private val loginGoogle = LoginGoogle()
     private val loginOAuthViewModel = LoginOAuthViewModel()
-
+    private val kakaoLogin = KakaoLogin()
 
 
     private val signInResultLauncher =
@@ -53,37 +57,16 @@ class Login : AppCompatActivity() {
         binding.login = viewModel
         binding.lifecycleOwner = this
 
-        viewModel.registration.observe(this) {
-            val signInIntent = loginGoogle.googleSignInClient.signInIntent
-            signInResultLauncher.launch(signInIntent)
+        //kakaoSdk 초기화
+        KakaoSdk.init(this, getString(R.string.kakao_reactive_app_key))
+
+        with(binding) {
+            GoogleLoginButton.setOnClickListener {
+                val signInIntent = loginGoogle.googleSignInClient.signInIntent
+                signInResultLauncher.launch(signInIntent)
+            }
+            KakaoLoginButton.setOnClickListener { kakaoLogin.kakaoLogin() }
+            nonMemberInApp.setOnClickListener { loginOAuthViewModel.nextActivity() }
         }
-
-        viewModel.non_registration.observe(this){
-            loginOAuthViewModel.nextActivity()
-            finish()
-        }
     }
-
-    override fun onStart() {
-        super.onStart()
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-    }
-
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onStop() {
-        super.onStop()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
-
 }

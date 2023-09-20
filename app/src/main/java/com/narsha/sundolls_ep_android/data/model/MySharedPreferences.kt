@@ -8,6 +8,8 @@ class MySharedPreferences(context: Context) {
         const val PREFS_FILENAME = "prefs"
         const val PREF_KEY_ACCESSTOKEN = "accessToken"
         const val PREF_KEY_TIME = "time"
+        const val PREF_KEY_START_TIME = "startTime"
+        const val PREF_KEY_END_TIME = "endTime"
     }
 
     val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
@@ -19,5 +21,12 @@ class MySharedPreferences(context: Context) {
         get() = prefs.getLong(PREF_KEY_TIME,0L)
         set(value) = prefs.edit().putLong(PREF_KEY_TIME, value).apply()
 
+    var startTime: String?
+        get() = prefs.getString(PREF_KEY_START_TIME, "")
+        set(value) = prefs.edit().putString(PREF_KEY_START_TIME, value).apply()
+
+    var endTime: String?
+        get() = prefs.getString(PREF_KEY_END_TIME, "")
+        set(value) = prefs.edit().putString(PREF_KEY_END_TIME, value).apply()
 
 }
