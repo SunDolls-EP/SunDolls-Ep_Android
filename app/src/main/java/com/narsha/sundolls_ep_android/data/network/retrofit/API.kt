@@ -40,6 +40,12 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
+import com.narsha.sundolls_ep_android.data.network.retrofit.response.friendLookupResponse.FriendLookupResponse
+import com.narsha.sundolls_ep_android.data.network.retrofit.response.googleLoginResponse.GoogleLoginResponse
+import retrofit2.Call
+import retrofit2.http.GET
+import retrofit2.http.Header
+
 
 interface API {
 
@@ -52,6 +58,7 @@ interface API {
     fun friendLookup(
         @Header("Authorization") googleIdToken: String,
     ): Call<FriendLookupResponse>
+
 
     //--------------------------------->
     @GET("/api/rank")
