@@ -13,15 +13,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
-        tools:context=".ui.activity.Login">
+        tools:context=".ui.activity.LoginActivity">
 
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="300dp"
             android:layout_height="150dp"
             android:layout_marginTop="100dp"
-            android:src="@drawable/app_logo"
+            android:src="@drawable/ic_eagle_pop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +29,7 @@
             android:id="@+id/KakaoLoginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/kakao_login_button"
+            android:background="@drawable/button_login_kakao"
             android:gravity="center"
             android:textColor="@color/black"
             android:fontFamily="@font/pretendard_bold"
@@ -44,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="280dp"
-            android:background="@drawable/button_google_login"
+            android:background="@drawable/button_login_google"
             android:gravity="center"
             android:textColor="@color/black"
             android:fontFamily="@font/pretendard_bold"
