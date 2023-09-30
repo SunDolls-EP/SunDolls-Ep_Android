@@ -5,12 +5,12 @@ import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
-import com.narsha.sundolls_ep_android.ui.activity.Login
+import com.narsha.sundolls_ep_android.ui.activity.LoginActivity
 import com.narsha.sundolls_ep_android.ui.viewmodel.activity.LoginOAuthViewModel
 
 
 class KakaoLogin {
-    private val context = Login.instance
+    private val context = LoginActivity.instance
     private val loginOAuthViewModel = LoginOAuthViewModel()
 
 

@@ -15,10 +15,10 @@ import com.narsha.sundolls_ep_android.data.network.oauth.kakao.KakaoLogin
 import com.narsha.sundolls_ep_android.databinding.ActivityLoginOauthBinding
 import com.narsha.sundolls_ep_android.ui.viewmodel.activity.LoginOAuthViewModel
 
-class Login : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     companion object {
-        lateinit var instance: Login
+        lateinit var instance: LoginActivity
         fun applicationContext(): Context {
             return instance.applicationContext
         }

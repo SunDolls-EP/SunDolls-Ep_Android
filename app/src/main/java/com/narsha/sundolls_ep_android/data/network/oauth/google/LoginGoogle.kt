@@ -10,7 +10,7 @@ import com.google.android.gms.tasks.Task
 import com.narsha.sundolls_ep_android.App
 import com.narsha.sundolls_ep_android.data.network.retrofit.ClientRetrofit
 import com.narsha.sundolls_ep_android.data.network.retrofit.response.googleLoginResponse.GoogleLoginResponse
-import com.narsha.sundolls_ep_android.ui.activity.Login
+import com.narsha.sundolls_ep_android.ui.activity.LoginActivity
 import com.narsha.sundolls_ep_android.ui.viewmodel.activity.LoginOAuthViewModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -72,7 +72,7 @@ class LoginGoogle() {
 
 
     val googleSignInClient: GoogleSignInClient by lazy {
-        GoogleSignIn.getClient(Login.applicationContext(), gso)
+        GoogleSignIn.getClient(LoginActivity.applicationContext(), gso)
     }
 
     fun Logout(){
