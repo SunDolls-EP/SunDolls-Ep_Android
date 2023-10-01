@@ -3,11 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <item
-        android:id="@+id/novelFragment"
-        android:icon="@drawable/ic_novel"
-        android:title="소설"
-        app:showAsAction="withText" />
 
     <item
         android:id="@+id/homeFragment"
@@ -16,9 +11,9 @@
         app:showAsAction="withText" />
 
     <item
-        android:id="@+id/menuFragment"
-        android:icon="@drawable/ic_menu"
-        android:title="메뉴"
+        android:id="@+id/novelFragment"
+        android:icon="@drawable/ic_novel"
+        android:title="소설"
         app:showAsAction="withText" />
 
     <item
@@ -26,4 +21,11 @@
         android:icon="@drawable/ic_ranking"
         android:title="랭킹"
         app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/menuFragment"
+        android:icon="@drawable/ic_menu"
+        android:title="메뉴"
+        app:showAsAction="withText" />
+
 </menu>

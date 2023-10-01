@@ -74,6 +74,7 @@
             android:outlineProvider="none"
             app:itemActiveIndicatorStyle="@color/black"
             app:itemBackground="@color/transparent"
+            android:background="@color/white"
             app:itemHorizontalTranslationEnabled="false"
             app:itemIconTint="@drawable/menu_selector_color"
             app:itemTextColor="@drawable/menu_selector_color"
