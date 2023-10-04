@@ -33,26 +33,6 @@ class HomeActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         val navController = navHostFragment.findNavController()
         binding.bnv.setupWithNavController(navController)
-
-//        binding.bnv.setOnItemSelectedListener { item ->
-//            when (item.itemId) {
-//                R.id.ranking -> {
-//
-//                }
-//                R.id.novel -> {
-//
-//                }
-//
-//                R.id.home -> {
-
-//                }
-//
-//                R.id.menu -> {
-//
-//                }
-//            }
-//            true
-//        }
     }
 
     override fun onResume() {
