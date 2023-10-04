@@ -45,6 +45,8 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="20dp"
+                    android:paddingTop="50dp"
+                    android:paddingBottom="50dp"
                     android:background="@drawable/container_rounded"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -113,14 +115,6 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="180dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:onClick="@{() -> home.onClick()}"
-                        android:layout_marginBottom="30dp"
-                        android:background="@drawable/background_button_timer" />
-
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -145,7 +139,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
                         android:fontFamily="@font/pretendard_bold"
-                        android:text="개인 주간 랭"
+                        android:text="개인 주간 랭킹"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -173,7 +167,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/pretendard_bold"
-                            android:text="이글팝"
+                            android:text="이혜성"
                             android:textColor="@color/black"
                             android:textSize="17sp" />
 
@@ -201,7 +195,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/pretendard_bold"
-                            android:text="이글팝"
+                            android:text="최시훈"
                             android:textColor="@color/black"
                             android:textSize="17sp" />
 
@@ -228,7 +222,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/pretendard_bold"
-                            android:text="이글팝"
+                            android:text="황주완"
                             android:textColor="@color/black"
                             android:textSize="17sp" />
 
@@ -247,126 +241,126 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/container_rounded"
-                    android:paddingStart="25dp"
-                    android:paddingEnd="25dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="200dp"-->
+<!--                    android:layout_marginStart="20dp"-->
+<!--                    android:layout_marginEnd="20dp"-->
+<!--                    android:background="@drawable/container_rounded"-->
+<!--                    android:paddingStart="25dp"-->
+<!--                    android:paddingEnd="25dp"-->
+<!--                    android:layout_marginBottom="20dp"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout">-->
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/appCompatTextView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:fontFamily="@font/pretendard_bold"
-                        android:text="학교 주간 랭"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+<!--                    <androidx.appcompat.widget.AppCompatTextView-->
+<!--                        android:id="@+id/appCompatTextView2"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:fontFamily="@font/pretendard_bold"-->
+<!--                        android:text="학교 주간 랭"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="20sp"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent" />-->
 
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/layout_group_ranking_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="20dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/layout_group_ranking_1"
-                        app:layout_constraintStart_toEndOf="@+id/layout_group_ranking_1"
-                        app:layout_constraintTop_toTopOf="@+id/layout_group_ranking_1">
+<!--                    <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                        android:id="@+id/layout_group_ranking_2"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:layout_marginStart="20dp"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@+id/layout_group_ranking_1"-->
+<!--                        app:layout_constraintStart_toEndOf="@+id/layout_group_ranking_1"-->
+<!--                        app:layout_constraintTop_toTopOf="@+id/layout_group_ranking_1">-->
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@drawable/background_imageview_profile" />
+<!--                        <androidx.appcompat.widget.AppCompatImageView-->
+<!--                            android:layout_width="70dp"-->
+<!--                            android:layout_height="70dp"-->
+<!--                            android:background="@drawable/background_imageview_profile" />-->
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/pretendard_bold"
-                            android:text="이글팝"
-                            android:textColor="@color/black"
-                            android:textSize="17sp" />
+<!--                        <androidx.appcompat.widget.AppCompatTextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_marginTop="10dp"-->
+<!--                            android:fontFamily="@font/pretendard_bold"-->
+<!--                            android:text="이글팝"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="17sp" />-->
 
-                    </androidx.appcompat.widget.LinearLayoutCompat>
+<!--                    </androidx.appcompat.widget.LinearLayoutCompat>-->
 
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/layout_group_ranking_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2">
+<!--                    <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                        android:id="@+id/layout_group_ranking_1"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2">-->
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:background="@drawable/background_imageview_profile" />
+<!--                        <androidx.appcompat.widget.AppCompatImageView-->
+<!--                            android:layout_width="90dp"-->
+<!--                            android:layout_height="90dp"-->
+<!--                            android:background="@drawable/background_imageview_profile" />-->
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/pretendard_bold"
-                            android:text="이글팝"
-                            android:textColor="@color/black"
-                            android:textSize="17sp" />
+<!--                        <androidx.appcompat.widget.AppCompatTextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_marginTop="10dp"-->
+<!--                            android:fontFamily="@font/pretendard_bold"-->
+<!--                            android:text="이글팝"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="17sp" />-->
 
-                    </androidx.appcompat.widget.LinearLayoutCompat>
+<!--                    </androidx.appcompat.widget.LinearLayoutCompat>-->
 
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/layout_group_ranking_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginEnd="20dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/layout_group_ranking_1"
-                        app:layout_constraintEnd_toStartOf="@+id/layout_group_ranking_1"
-                        app:layout_constraintTop_toTopOf="@+id/layout_group_ranking_1">
+<!--                    <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                        android:id="@+id/layout_group_ranking_3"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:layout_marginEnd="20dp"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@+id/layout_group_ranking_1"-->
+<!--                        app:layout_constraintEnd_toStartOf="@+id/layout_group_ranking_1"-->
+<!--                        app:layout_constraintTop_toTopOf="@+id/layout_group_ranking_1">-->
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@drawable/background_imageview_profile" />
+<!--                        <androidx.appcompat.widget.AppCompatImageView-->
+<!--                            android:layout_width="70dp"-->
+<!--                            android:layout_height="70dp"-->
+<!--                            android:background="@drawable/background_imageview_profile" />-->
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/pretendard_bold"
-                            android:text="이글팝"
-                            android:textColor="@color/black"
-                            android:textSize="17sp" />
+<!--                        <androidx.appcompat.widget.AppCompatTextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_marginTop="10dp"-->
+<!--                            android:fontFamily="@font/pretendard_bold"-->
+<!--                            android:text="이글팝"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="17sp" />-->
 
-                    </androidx.appcompat.widget.LinearLayoutCompat>
+<!--                    </androidx.appcompat.widget.LinearLayoutCompat>-->
 
-                    <!--                <androidx.appcompat.widget.AppCompatImageView-->
-                    <!--                    android:layout_width="70dp"-->
-                    <!--                    android:layout_height="70dp"-->
-                    <!--                    android:background="@drawable/background_imageview_profile" />-->
+<!--                    &lt;!&ndash;                <androidx.appcompat.widget.AppCompatImageView&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:layout_width="70dp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:layout_height="70dp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:background="@drawable/background_imageview_profile" />&ndash;&gt;-->
 
 
-                    <!--                <androidx.appcompat.widget.AppCompatImageView-->
-                    <!--                    android:layout_width="90dp"-->
-                    <!--                    android:layout_height="90dp"-->
-                    <!--                    android:background="@drawable/background_imageview_profile" />-->
+<!--                    &lt;!&ndash;                <androidx.appcompat.widget.AppCompatImageView&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:layout_width="90dp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:layout_height="90dp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    android:background="@drawable/background_imageview_profile" />&ndash;&gt;-->
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
 
