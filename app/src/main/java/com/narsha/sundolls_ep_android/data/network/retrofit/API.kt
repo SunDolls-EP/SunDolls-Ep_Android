@@ -11,10 +11,8 @@ import com.narsha.sundolls_ep_android.data.local.retrofit.response.answerModifyR
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.answerModifyResponse.AnswerModifyResponse
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.calendarAddResponse.CalendarAddResponse
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.calendarInquiryResponse.CalendarInquiryResponse
-import com.narsha.sundolls_ep_android.data.local.retrofit.response.friendLookupResponse.FriendLookupResponse
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.friendRequestResponse.FriendRequestResponse
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.friendDeleteResponse.FriendDeleteResponse
-import com.narsha.sundolls_ep_android.data.local.retrofit.response.googleLoginResponse.GoogleLoginResponse
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.modifyUserResponse.ModifyUserResponse
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.quesionSearchResponse.QuestionSearchResponse
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.questionAddResponse.QuestionAddResponse
@@ -29,7 +27,7 @@ import com.narsha.sundolls_ep_android.data.local.retrofit.response.studyTimeInqu
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.userNameChangeResponse.UserNameChangeRequest
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.userNameChangeResponse.UserNameChangeResponse
 import com.narsha.sundolls_ep_android.data.network.retrofit.response.friendLookupResponse.FriendLookupResponse
-import com.narsha.sundolls_ep_android.data.network.retrofit.response.googleLoginResponse.GoogleLoginResponse
+import com.narsha.sundolls_ep_android.data.network.retrofit.response.login_response.LoginResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -40,23 +38,18 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
-import com.narsha.sundolls_ep_android.data.network.retrofit.response.friendLookupResponse.FriendLookupResponse
-import com.narsha.sundolls_ep_android.data.network.retrofit.response.googleLoginResponse.GoogleLoginResponse
-import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Header
-import com.narsha.sundolls_ep_android.data.network.retrofit.response.friendLookupResponse.FriendLookupResponse
-import com.narsha.sundolls_ep_android.data.network.retrofit.response.googleLoginResponse.GoogleLoginResponse
-import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Header
 
 interface API {
 
-    @GET("/api/token")
-    fun GoogleLogin(
+    @GET("/login/oauth2/authorize/google")
+    fun googleLogin(
         @Header("Authorization") googleIdToken: String,
-    ): Call<GoogleLoginResponse>
+    ): Call<LoginResponse>
+
+    @GET("/login/oauth2/authorize/kakao")
+    fun kakaoLogin(
+        @Header("Authorization") kakaoAccessToken: String,
+    ): Call<LoginResponse>
 
     @GET("/api/user/friend")
     fun friendLookup(

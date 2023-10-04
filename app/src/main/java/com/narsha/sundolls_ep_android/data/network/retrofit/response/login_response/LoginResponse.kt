@@ -1,8 +1,8 @@
-package com.narsha.sundolls_ep_android.data.network.retrofit.response.googleLoginResponse
+package com.narsha.sundolls_ep_android.data.network.retrofit.response.login_response
 
 import com.google.gson.annotations.SerializedName
 
-data class GoogleLoginResponse(
+data class LoginResponse(
     @SerializedName("username")
     val username: String,
     @SerializedName("schoolName")
@@ -10,5 +10,7 @@ data class GoogleLoginResponse(
     @SerializedName("createdAt")
     val createdAt: String,
     @SerializedName("modifiedAt")
-    val modifiedAt: String
+    val modifiedAt: String,
+    @SerializedName("tag")
+    val tag: String
 )

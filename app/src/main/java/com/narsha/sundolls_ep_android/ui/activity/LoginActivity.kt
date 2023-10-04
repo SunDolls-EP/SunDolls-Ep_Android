@@ -65,8 +65,7 @@ class LoginActivity : AppCompatActivity() {
                 val signInIntent = loginGoogle.googleSignInClient.signInIntent
                 signInResultLauncher.launch(signInIntent)
             }
-            KakaoLoginButton.setOnClickListener { kakaoLogin.kakaoLogin() }
-            nonMemberInApp.setOnClickListener { loginOAuthViewModel.nextActivity() }
+            KakaoLoginButton.setOnClickListener { kakaoLogin.kakaoAccessToken() }
         }
     }
 }

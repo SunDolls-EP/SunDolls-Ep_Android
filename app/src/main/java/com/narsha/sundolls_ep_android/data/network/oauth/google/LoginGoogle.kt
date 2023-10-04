@@ -9,7 +9,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.narsha.sundolls_ep_android.App
 import com.narsha.sundolls_ep_android.data.network.retrofit.ClientRetrofit
-import com.narsha.sundolls_ep_android.data.network.retrofit.response.googleLoginResponse.GoogleLoginResponse
+import com.narsha.sundolls_ep_android.data.network.retrofit.response.login_response.LoginResponse
 import com.narsha.sundolls_ep_android.ui.activity.LoginActivity
 import com.narsha.sundolls_ep_android.ui.viewmodel.activity.LoginOAuthViewModel
 import retrofit2.Call
@@ -28,7 +28,7 @@ class LoginGoogle() {
             Log.d("GoogleSignIn", "User name: ${account.displayName}")
             Log.d("GoogleSignIn", "User email: ${account.email}")
             Log.d("GoogleSignIn", "User idToken: $idToken")
-            Login(idToken)
+            googleLogin(idToken)
 
         } catch (e: ApiException) {
             Log.d("상태", e.message.toString())
@@ -40,31 +40,32 @@ class LoginGoogle() {
 
 
     //서버 로그인(Google idToken으로 로그인함)
-    fun Login(idToken: String) {
-        ClientRetrofit.api.GoogleLogin(idToken).enqueue(object : Callback<GoogleLoginResponse> {
+    private fun googleLogin(idToken: String) {
+        ClientRetrofit.api.googleLogin(idToken).enqueue(object : Callback<LoginResponse> {
             override fun onResponse(
-                call: Call<GoogleLoginResponse>,
-                response: Response<GoogleLoginResponse>
+                call: Call<LoginResponse>,
+                response: Response<LoginResponse>
             ) {
                 if (response.isSuccessful) {
-                    val data = response.headers().get("authorization")!!
-                    App.prefs.accessToken = data
-                    Log.d("access_token", App.prefs.accessToken.toString())
-                    Log.d("User",response.body().toString())
+                    val data = response.body()
+                    App.prefs.accessToken = response.headers()["authorization"]!!
+                    App.prefs.name = data?.username?:""
+                    App.prefs.school = data?.schoolName?:""
+                    Log.d("retrofit", App.prefs.accessToken)
+                    Log.d("retrofit",response.body().toString())
                     loginOAuthViewModel.nextActivity()
                 } else {
                     Log.d("retrofit", response.code().toString())
                 }
             }
 
-            override fun onFailure(call: Call<GoogleLoginResponse>, t: Throwable) {
-                Log.d("retrofit", t.message.toString())
-                Log.d("retrofit","error")
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                Log.e("retrofit", t.message.toString())
             }
         })
     }
 
-    val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+    private val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
         .requestIdToken("224818744622-c01jteud2afgr9o296c3p4h0p42hmar7.apps.googleusercontent.com")
         .requestEmail()
         .requestProfile()
