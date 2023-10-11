@@ -2,7 +2,6 @@ package com.narsha.sundolls_ep_android.data.model
 
 import android.content.Context
 import android.content.SharedPreferences
-
 class MySharedPreferences(context: Context) {
     companion object{
         const val PREFS_FILENAME = "prefs"
