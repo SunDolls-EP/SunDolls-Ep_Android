@@ -27,10 +27,6 @@
         android:theme="@style/Theme.SunDollsEp_Android"
         android:usesCleartextTraffic="true"
         tools:targetApi="s">
-        <service
-            android:name=".service.TimerService"
-            android:enabled="true"
-            android:exported="true"></service>
 
         <activity
             android:name=".ui.activity.SplashActivity"
@@ -47,19 +43,16 @@
         </activity>
 
         <service
-            android:name=".server.TimerService"
+            android:name=".service.TimerService"
             android:enabled="true"
             android:exported="false" />
 
         <activity
-            android:name=".ui.activity.Home"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".ui.activity.Login"
-            android:exported="false">
+            android:name=".ui.activity.LoginActivity"
+            android:exported="false"/>
 
-        </activity>
+        <activity android:name=".ui.activity.HomeActivity"
+            android:exported="false"/>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
