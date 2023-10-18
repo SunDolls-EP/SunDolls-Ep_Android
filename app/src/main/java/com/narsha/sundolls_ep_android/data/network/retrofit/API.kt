@@ -18,6 +18,7 @@ import com.narsha.sundolls_ep_android.data.local.retrofit.response.quesionSearch
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.questionAddResponse.QuestionAddResponse
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.questionDeleteResponse.QuestionDeleteResponse
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.questionInquiryResponse.QuestionInquiryResponse
+import com.narsha.sundolls_ep_android.data.local.retrofit.response.questionInquiryResponse.QuestionInquiryResponsePageable
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.questionModifyResponse.QuestionModifyResponse
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.questionModifyResponse.QuestionRequestUpdate
 import com.narsha.sundolls_ep_android.data.local.retrofit.response.schoolSpecifyResponse.SchoolSpecifyRequest
@@ -58,126 +59,146 @@ interface API {
 
 
     //--------------------------------->
-    @GET("/api/rank")
-    fun rankInquire(
-        //Query Params
-        @Header("Authorization") access: Token,
-    ): Call<RankInquireResponse>
+    @PUT("/api/user")
+    fun friendModify(
+        @Header("Authorization") token: String
+    )
 
-    @PATCH("/api/token")
-    fun modifyUser(
-        @Header("Authorization") accessToken: String,
-    ): Call<ModifyUserResponse>
-
-    @POST("/api/user/friend/{friendName}")
-    fun friendRequest(
-        @Header("Authorization") access: Token,
-        @Path("friendName") friendName: String
-    ): Call<FriendRequestResponse>
-
-    @DELETE("/api/user/friend/{friendName}")
-    fun friendDelete(
-        @Header("Authorization") access: Token,             //null except
-        @Path("friendName") friendName: String
-    ): Call<FriendDeleteResponse>
-
-    @PATCH("api/user/friend/{friendName}")
-    fun friendAllow(
-        @Header("Authorization") access: Token,
-        @Path("friendName") friendName: String
-    ): Call<FriendAllowResponse>
-
-
-    //----------------------------------------------------------------
-
-    @POST("api/user/study")
-    fun studyTimeAdd(
-        @Header("Authorization") access: Token,
-    ): Call<StudyTimeAddResponse>
-
-    @GET("api/user/study")                                  //
-    fun studyTimeInquiry(
-        @Header("Authorization") access: Token,
+    @GET("/api/user/study")
+    fun checkStudyRecord(
+        @Header("Authorization") token: String,
         @Query("from") from: String = "2000-01-01 00",
-        @Query("to") to: String = "3000-12-31 23"
-    ): Call<StudyTimeInquiryResponse>
+        @Query("to") to: String = "2000-12-31 23"
+    )
 
-    @GET("api/calendar")
-    fun calendarInquiry(
-        @Header("Authorization") access: Token,
+    @POST("/api/user/study")
+    fun submitStudyRecord(
+        @Header("Authorization") token: String,
+    )
+
+    @POST("/api/user/friend/{username}/{tag}")
+    fun requestFriend(
+        @Header("Authorization") token: String,
+        @Path("username") username: String,
+        @Path("tag") tag: String,
+    )
+
+    @DELETE("/api/user/friend/{username}/{tag}")
+    fun deleteFriend(
+        @Header("Authorization") token: String,
+        @Path("username") username: String,
+        @Path("tag") tag: String,
+    )
+
+    @PATCH("/api/user/friend/{username}/{tag}")
+    fun patchFriend(
+        @Header("Authorization") token: String,
+        @Path("username") username: String,
+        @Path("tag") tag: String,
+    )
+
+    @GET("/api/user/{username}")
+    fun searchFriendByUsername(
+        @Path("username") username: String
+    )
+
+    @GET("/api/user/{username}/{tag}")
+    fun searchFriendByUsernameTag(
+        @Path("username") username: String,
+        @Path("tag") tag: String
+    )
+
+    @GET("/api/user/friend")
+    fun checkFriendList(
+        @Header("Authorization") token: String
+    )
+
+    @GET("/api/calendar")
+    fun checkCalendar(
+        @Header("Authorization") token: String,
         @Query("from") from: String = "2000-01-01 00",
-        @Query("to") to: String = "3000-12-31 23"
-    ): Call<CalendarInquiryResponse>
+        @Query("to") to: String = "2000-12-31 23"
+    )
 
-    @POST("api/calendar")
-    fun calendarAdd(
-        @Header("Authorization") access: Token,
-    ): Call<CalendarAddResponse>
+    @PUT("/api/calendar")
+    fun modifyCalendar(
+        @Header("Authorization") token: String,
+    )
 
-    @PUT("api/calendar")
-    fun calendarModify(
-        @Header("Authorization") access: Token,
-    ): Call<CalendarModifyReponse>
+    @POST("/api/calendar")
+    fun addCalendar(
+        @Header("Authorization") token: String,
+    )
 
-    @GET("api/QnA/question")
-    fun questionInquiry(
-        @Header("Authorization") access: Token,
-    ): Call<QuestionInquiryResponse>
+    @GET("/api/QnA/question/{questionId}")
+    fun searchQuestion(
+        @Path("questionId") questionId: Long,
+    )
 
-    @POST("api/QnA/question")
-    fun questionAdd(
-        @Header("Authorization") access: Token,
-    ): Call<QuestionAddResponse>
+    @PUT("/api/QnA/question/{questionId}")
+    fun modifyQuestion(
+        @Header("Authorization") token: String,
+        @Path("questionId") questionId: Long,
+    )
 
-    @PATCH("api/QnA/question/{noticeId}")
-    fun questionModify(
-        @Header("Authorization") access: Token,
-        @Path("noticeId") noticeId: String,
-        @Body request: QuestionRequestUpdate
-    ): Call<QuestionModifyResponse>
+    @DELETE("/api/QnA/question/{questionId}")
+    fun deleteQuestion(
+        @Header("Authorization") token: String,
+        @Path("questionId") questionId: Long,
+    )
 
-    @DELETE("api/QnA/question/{noticeId}")
-    fun questionDelete(
-        @Header("Authorization") access: Token,
-        @Path("noticeId") noticeId: String,
-    ): Call<QuestionDeleteResponse>
+    @POST("/api/QnA/question")
+    fun postQuestion(
+        @Header("Authorization") token: String,
+    )
 
-    @GET("api/QnA/answer/{questionNum}")                
-    fun answerInquiry(
-        @Header("Authorization") access: Token,
-        @Path("questionNum") questionNum: String,
-    ): Call<AnswerInquiryResponse>
+    @GET("/api/QnA/question/list")
+    fun checkQuestion(
+//        @Query("pageable") pageable:      //Description
+        @Query("title-keyword") titleKeyword:String?,
+        @Query("content-keyword") contentKeyword:String?,
+        @Query("writer-name") writerName:String?,
+        @Query("writer-tag") writerTag:String?,
+        @Query("from") from:String,
+        @Query("to") to:String,
+        //?
+        )
 
-    @POST("api/QnA/answer/{questionNum}")
-    fun answerAdd(
-        @Header("Authorization") access: Token,
-        @Path("questionNum") questionNum: String,
-        @Body request: AnswerAddRequest
-    ): Call<AnswerAddResponse>
+    @PUT("/api/QnA/answer/{answerId}")
+    fun modifyAnswer(
+        @Header("Authorization") token: String,
+        @Path("answerId") answerId: Long,
+    )
 
-    @PUT("api/QnA/answer/{questionNum}")
-    fun answerModify(
-        @Header("Authorization") access: Token,
-        @Path("questionNum") questionNum: String,
-        @Body request: AnswerModifyRequest
-    ): Call<AnswerModifyResponse>
+    @DELETE("/api/QnA/answer/{answerId}")
+    fun deleteAnswer(
+        @Header("Authorization") token: String,
+        @Path("answerId") answerId: Long,
+    )
 
-    @GET("api/QnA/question/search")
-    fun questionSearch(
-        @Header("Authorization") access: Token,
-        @Query("keyword") keyword: String = "3000-12-31 23"
-    ): Call<QuestionSearchResponse>
+    @GET("/api/QnA/answer/{questionId}")
+    fun checkAnswer(
+        @Path("questionId") questionId: Long,
+//        @Query("pageable") pageable: Pageable = Pagerable(0,1,Sort(listOf("string"))) //description
+    )
 
-    @POST("api/user/school")
-    fun schoolSpecify(
-        @Header("Authorization") access: Token,
-        @Body request: SchoolSpecifyRequest
-    ): Call<SchoolSpecifyResponse>
+    @POST("/api/QnA/answer/{questionId}")
+    fun addAnswer(
+        @Header("Authorization") token: String,
+        @Path("questionId") questionId: Long,
+    )
 
-    @POST("api/user/username")
-    fun usernameChange(
-        @Header("Authorization") access: String,
-        @Body request: UserNameChangeRequest
-    ): Call<UserNameChangeResponse>
+    @GET("/school/{schoolName}")
+    fun checkStudentRank(
+        @Path("schoolName") schoolName: String
+    )
+
+    @GET("/school/all")
+    fun checkSchoolRank()
+
+    @GET("/")
+    fun checkRank()
+
+
 
 }
