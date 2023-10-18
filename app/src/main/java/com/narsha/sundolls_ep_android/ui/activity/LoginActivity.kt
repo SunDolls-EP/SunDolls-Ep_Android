@@ -1,21 +1,20 @@
 package com.narsha.sundolls_ep_android.ui.activity
 
 import android.content.Context
-import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.kakao.sdk.common.KakaoSdk
 import com.narsha.sundolls_ep_android.R
+import com.narsha.sundolls_ep_android.base.BaseActivity
 import com.narsha.sundolls_ep_android.data.network.oauth.google.LoginGoogle
 import com.narsha.sundolls_ep_android.data.network.oauth.kakao.KakaoLogin
 import com.narsha.sundolls_ep_android.databinding.ActivityLoginOauthBinding
 import com.narsha.sundolls_ep_android.ui.viewmodel.activity.LoginOAuthViewModel
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity :
+    BaseActivity<ActivityLoginOauthBinding, LoginOAuthViewModel>(R.layout.activity_login_oauth) {
 
     companion object {
         lateinit var instance: LoginActivity
@@ -28,16 +27,21 @@ class LoginActivity : AppCompatActivity() {
         instance = this
     }
 
-    private val viewModel: LoginOAuthViewModel by lazy { ViewModelProvider(this)[LoginOAuthViewModel::class.java] }
-    private val binding: ActivityLoginOauthBinding by lazy {
-        DataBindingUtil.setContentView(
-            this,
-            R.layout.activity_login_oauth
-        )
+    override val viewModel: LoginOAuthViewModel by viewModels()
+
+    override fun start() {
+        KakaoSdk.init(this, getString(R.string.kakao_reactive_app_key))
+
+        with(binding) {
+            GoogleLoginButton.setOnClickListener {
+                val signInIntent = loginGoogle.googleSignInClient.signInIntent
+                signInResultLauncher.launch(signInIntent)
+            }
+            KakaoLoginButton.setOnClickListener { kakaoLogin.kakaoAccessToken() }
+        }
     }
 
     private val loginGoogle = LoginGoogle()
-    private val loginOAuthViewModel = LoginOAuthViewModel()
     private val kakaoLogin = KakaoLogin()
 
 
@@ -50,22 +54,4 @@ class LoginActivity : AppCompatActivity() {
                 Log.d("애러", result.toString())
             }
         }
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding.login = viewModel
-        binding.lifecycleOwner = this
-
-        //kakaoSdk 초기화
-        KakaoSdk.init(this, getString(R.string.kakao_reactive_app_key))
-
-        with(binding) {
-            GoogleLoginButton.setOnClickListener {
-                val signInIntent = loginGoogle.googleSignInClient.signInIntent
-                signInResultLauncher.launch(signInIntent)
-            }
-            KakaoLoginButton.setOnClickListener { kakaoLogin.kakaoAccessToken() }
-        }
-    }
 }

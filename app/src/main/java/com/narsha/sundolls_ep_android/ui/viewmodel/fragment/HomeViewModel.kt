@@ -2,9 +2,9 @@ package com.narsha.sundolls_ep_android.ui.viewmodel.fragment
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.narsha.sundolls_ep_android.base.BaseViewModel
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel : BaseViewModel() {
     private val _timerStatus = MutableLiveData(false)
     val timerStatus: LiveData<Boolean> get() = _timerStatus
 

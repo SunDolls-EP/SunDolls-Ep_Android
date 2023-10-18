@@ -17,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun startLoading() {
         val handler = Handler(Looper.getMainLooper())
-        handler.postDelayed(Runnable {
+        handler.postDelayed( {
             // Splash Screen이 뜨고 나서 실행될 Activity 연결
             Intent(applicationContext, LoginActivity::class.java).also {
                 it.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
