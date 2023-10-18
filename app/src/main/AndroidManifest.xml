@@ -27,19 +27,13 @@
         android:theme="@style/Theme.SunDollsEp_Android"
         android:usesCleartextTraffic="true"
         tools:targetApi="s">
-        <service
-            android:name=".service.TimerService"
-            android:enabled="true"
-            android:exported="true"></service>
 
         <activity
             android:name=".ui.activity.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
-
                 <data
                     android:host="oauth"
                     android:scheme="@string/kakao_reactive_app_key" />
@@ -47,19 +41,16 @@
         </activity>
 
         <service
-            android:name=".server.TimerService"
+            android:name=".service.TimerService"
             android:enabled="true"
             android:exported="false" />
-
         <activity
-            android:name=".ui.activity.Home"
+            android:name=".ui.activity.LoginActivity"
+            android:exported="false"/>
+
+        <activity android:name=".ui.activity.HomeActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".ui.activity.Login"
-            android:exported="false">
-
-        </activity>
+            android:enabled="true"/>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
