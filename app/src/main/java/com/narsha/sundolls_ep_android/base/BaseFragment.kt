@@ -14,7 +14,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(
 ) : Fragment() {
 
     protected lateinit var binding: B
-    protected lateinit var mViewModel: VM
+    private lateinit var mViewModel: VM
     protected abstract val viewModel: VM
 //    protected open val hasBottomNavigation: Boolean = false
 
