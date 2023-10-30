@@ -8,29 +8,50 @@ import android.app.Service
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
+import android.util.Log
 import androidx.core.app.NotificationCompat
+import androidx.core.app.ServiceCompat
 import com.narsha.sundolls_ep_android.R
 import com.narsha.sundolls_ep_android.ui.activity.HomeActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class TimerService : Service() {
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        val notification = createNotification()
+        startForeground(1, notification)
+        checkTime()
+        return START_NOT_STICKY
+    }
 
     override fun onBind(intent: Intent): IBinder? {
         return null
     }
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        val notification = createNotification()
-        startForeground(1, notification)
 
-        return START_NOT_STICKY
+    override fun onDestroy() {
+        super.onDestroy()
+        stopSelf()
+        ServiceCompat.stopForeground(this, ServiceCompat.STOP_FOREGROUND_REMOVE)
+    }
+
+    private fun checkTime() {
+        var time = 0
+        CoroutineScope(Dispatchers.IO).launch {
+            while (true) {
+                Log.d("시간","Time: $time")
+                delay(1000L)
+                time++
+            }
+        }
     }
 
     override fun onRebind(intent: Intent?) {
         super.onRebind(intent)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
     override fun onTaskRemoved(rootIntent: Intent?) {
         //super.onTaskRemove()
         //Task 종료시 불림

@@ -12,27 +12,31 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     override val viewModel: HomeViewModel by viewModels()
 
     override fun start() {
-        viewModel.timerStatus.observe(viewLifecycleOwner){
-            if(it) {
-                Log.d("상태",it.toString())
-                serviceStart()
-            } else {
-                Log.d("상태",it.toString())
+        var timerStatus = false
+        binding.buttonTimer.setOnClickListener {
+            timerStatus = if (timerStatus) {
+                binding.buttonTimer.setImageResource(R.drawable.ic_start)
+                Log.d("타이머", "멈춤")
                 serviceStop()
+                false
+            } else {
+                binding.buttonTimer.setImageResource(R.drawable.ic_stop)
+                Log.d("타이머", "시작")
+                serviceStart()
+                true
             }
         }
-        serviceStart()
     }
 
     private fun serviceStart() {
-        Intent(context, TimerService::class.java).also {
-            activity?.startService(it)
+        Intent(context, TimerService::class.java).also { intent ->
+            activity?.startService(intent)
         }
     }
 
-    private fun serviceStop(){
-        Intent(context, TimerService::class.java).also {
-            activity?.stopService(it)
+    private fun serviceStop() {
+        Intent(context, TimerService::class.java).also { intent ->
+            activity?.stopService(intent)
         }
     }
 }

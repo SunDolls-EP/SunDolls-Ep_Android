@@ -113,6 +113,16 @@
                             app:layout_constraintEnd_toEndOf="@+id/Check_Time"
                             app:layout_constraintStart_toStartOf="@+id/Check_Time" />
 
+                        <ImageView
+                            android:id="@+id/button_timer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_stop"
+                            android:layout_marginTop="20dp"
+                            app:layout_constraintEnd_toEndOf="@+id/Target_Time"
+                            app:layout_constraintStart_toStartOf="@+id/Target_Time"
+                            app:layout_constraintTop_toBottomOf="@+id/Target_Time" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
