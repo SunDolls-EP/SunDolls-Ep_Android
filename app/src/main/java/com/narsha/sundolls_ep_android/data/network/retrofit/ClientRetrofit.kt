@@ -12,7 +12,7 @@ object ClientRetrofit {
         .addInterceptor(HeaderInterceptor())
         .build()
 
-    val retrofit = Retrofit.Builder()
+    private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(baseURL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
