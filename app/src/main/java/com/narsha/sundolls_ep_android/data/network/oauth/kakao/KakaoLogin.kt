@@ -5,9 +5,9 @@ import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
-import com.narsha.sundolls_ep_android.App
+import com.narsha.sundolls_ep_android.utils.App
 import com.narsha.sundolls_ep_android.data.network.retrofit.ClientRetrofit
-import com.narsha.sundolls_ep_android.data.network.retrofit.response.login_response.LoginResponse
+import com.narsha.sundolls_ep_android.data.network.dto.oauth.LoginResponseDto
 import com.narsha.sundolls_ep_android.ui.activity.LoginActivity
 import com.narsha.sundolls_ep_android.ui.viewmodel.activity.LoginOAuthViewModel
 import retrofit2.Call
@@ -53,8 +53,8 @@ class KakaoLogin {
     }
 
     private fun kakaoLogin(token: String) {
-        ClientRetrofit.api.kakaoLogin(token).enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+        ClientRetrofit.api.kakaoLogin(token).enqueue(object : Callback<LoginResponseDto> {
+            override fun onResponse(call: Call<LoginResponseDto>, response: Response<LoginResponseDto>) {
                 if(response.code() == 200){
                     val data = response.body()
                     App.prefs.accessToken = response.headers()["authorization"]!!
@@ -68,7 +68,7 @@ class KakaoLogin {
                 }
             }
 
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+            override fun onFailure(call: Call<LoginResponseDto>, t: Throwable) {
                 Log.d("retrofit",t.message.toString())
             }
 

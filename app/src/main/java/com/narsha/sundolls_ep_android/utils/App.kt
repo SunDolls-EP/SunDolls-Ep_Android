@@ -1,4 +1,4 @@
-package com.narsha.sundolls_ep_android
+package com.narsha.sundolls_ep_android.utils
 
 import android.app.Application
 import com.narsha.sundolls_ep_android.data.model.MySharedPreferences

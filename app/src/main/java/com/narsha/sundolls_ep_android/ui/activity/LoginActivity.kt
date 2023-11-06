@@ -12,6 +12,7 @@ import com.narsha.sundolls_ep_android.data.network.oauth.google.LoginGoogle
 import com.narsha.sundolls_ep_android.data.network.oauth.kakao.KakaoLogin
 import com.narsha.sundolls_ep_android.databinding.ActivityLoginOauthBinding
 import com.narsha.sundolls_ep_android.ui.viewmodel.activity.LoginOAuthViewModel
+import com.narsha.sundolls_ep_android.utils.OnSingleClickListener
 
 class LoginActivity :
     BaseActivity<ActivityLoginOauthBinding, LoginOAuthViewModel>(R.layout.activity_login_oauth) {
@@ -29,20 +30,23 @@ class LoginActivity :
 
     override val viewModel: LoginOAuthViewModel by viewModels()
 
+
+    private val loginGoogle = LoginGoogle()
+    private val kakaoLogin = KakaoLogin()
+
     override fun start() {
         KakaoSdk.init(this, getString(R.string.kakao_reactive_app_key))
 
         with(binding) {
-            GoogleLoginButton.setOnClickListener {
+            GoogleLoginButton.setOnClickListener(OnSingleClickListener {
                 val signInIntent = loginGoogle.googleSignInClient.signInIntent
                 signInResultLauncher.launch(signInIntent)
-            }
-            KakaoLoginButton.setOnClickListener { kakaoLogin.kakaoAccessToken() }
+            })
+
+
+            KakaoLoginButton.setOnClickListener(OnSingleClickListener { kakaoLogin.kakaoAccessToken() })
         }
     }
-
-    private val loginGoogle = LoginGoogle()
-    private val kakaoLogin = KakaoLogin()
 
 
     private val signInResultLauncher =

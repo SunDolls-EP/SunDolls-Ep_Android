@@ -7,9 +7,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
-import com.narsha.sundolls_ep_android.App
+import com.narsha.sundolls_ep_android.utils.App
 import com.narsha.sundolls_ep_android.data.network.retrofit.ClientRetrofit
-import com.narsha.sundolls_ep_android.data.network.retrofit.response.login_response.LoginResponse
+import com.narsha.sundolls_ep_android.data.network.dto.oauth.LoginResponseDto
 import com.narsha.sundolls_ep_android.ui.activity.LoginActivity
 import com.narsha.sundolls_ep_android.ui.viewmodel.activity.LoginOAuthViewModel
 import retrofit2.Call
@@ -41,10 +41,10 @@ class LoginGoogle() {
 
     //서버 로그인(Google idToken으로 로그인함)
     private fun googleLogin(idToken: String) {
-        ClientRetrofit.api.googleLogin(idToken).enqueue(object : Callback<LoginResponse> {
+        ClientRetrofit.api.googleLogin(idToken).enqueue(object : Callback<LoginResponseDto> {
             override fun onResponse(
-                call: Call<LoginResponse>,
-                response: Response<LoginResponse>
+                call: Call<LoginResponseDto>,
+                response: Response<LoginResponseDto>
             ) {
                 if (response.isSuccessful) {
                     val data = response.body()
@@ -59,7 +59,7 @@ class LoginGoogle() {
                 }
             }
 
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+            override fun onFailure(call: Call<LoginResponseDto>, t: Throwable) {
                 Log.e("retrofit", t.message.toString())
             }
         })
