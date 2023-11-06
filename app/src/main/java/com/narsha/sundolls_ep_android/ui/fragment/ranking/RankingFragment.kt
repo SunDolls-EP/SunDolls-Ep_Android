@@ -7,13 +7,13 @@ import com.narsha.sundolls_ep_android.base.BaseFragment
 import com.narsha.sundolls_ep_android.databinding.FragmentRankingBinding
 import com.narsha.sundolls_ep_android.ui.adapter.RankingListAdapter
 import com.narsha.sundolls_ep_android.ui.adapter.decoration.RankingDecoraiton
-import com.narsha.sundolls_ep_android.ui.viewmodel.fragment.RankingViewModel
+import com.narsha.sundolls_ep_android.ui.viewmodel.fragment.UserViewModel
 
-class RankingFragment: BaseFragment<FragmentRankingBinding, RankingViewModel>(
+class RankingFragment: BaseFragment<FragmentRankingBinding, UserViewModel>(
     R.layout.fragment_ranking
 ) {
     private val rankingListAdapter = RankingListAdapter()
-    override val viewModel: RankingViewModel by viewModels()
+    override val viewModel: UserViewModel by viewModels()
 
     override fun start() {
         val rankingDecoraiton = RankingDecoraiton()
