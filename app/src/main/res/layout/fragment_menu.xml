@@ -7,20 +7,21 @@
 
         <variable
             name="menu"
-            type="com.narsha.sundolls_ep_android.ui.viewmodel.fragment.MenuViewModel" />
+            type="com.narsha.sundolls_ep_android.ui.viewmodel.fragment.UserViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_layout"
+            android:elevation="10dp"
+            android:layout_margin="20dp"
             android:padding="20dp">
 
             <TextView
@@ -38,8 +39,8 @@
                 android:id="@+id/button_account_fix"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:gravity="center"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="@+id/textView5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView5">
@@ -66,7 +67,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView6" />
             </LinearLayout>
-
 
 
             <ImageView
@@ -144,7 +144,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:elevation="10dp"
             android:background="@drawable/background_layout"
             android:padding="20dp">
 
@@ -236,8 +238,8 @@
                 android:id="@+id/button_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="20dp"
+                android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 

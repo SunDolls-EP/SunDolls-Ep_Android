@@ -6,16 +6,13 @@
 
         <variable
             name="ranking"
-            type="com.narsha.sundolls_ep_android.ui.viewmodel.fragment.RankingViewModel" />
+            type="com.narsha.sundolls_ep_android.ui.viewmodel.fragment.UserViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
-        android:paddingStart="25dp"
-        android:paddingEnd="25dp"
-        android:paddingBottom="30dp">
+        android:background="@color/background">
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -47,9 +44,9 @@
             android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:layout_marginTop="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -78,9 +75,9 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:layout_marginStart="20dp"
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
             app:layout_constraintStart_toEndOf="@+id/linearLayout2"
             app:layout_constraintTop_toTopOf="@+id/linearLayout2">
@@ -108,8 +105,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/background_layout"
+            android:elevation="10dp"
+            android:orientation="vertical"
             android:paddingStart="30dp"
             android:paddingTop="40dp"
             android:paddingEnd="30dp"
@@ -119,15 +121,52 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendard_semibold"
+                android:layout_marginBottom="10dp"
+                android:text="랭킹"
+                android:textColor="@color/black"
+                android:textSize="22dp" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="77dp"
+                    android:layout_height="23dp"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:checked="true"
+                    android:fontFamily="@font/pretendard_semibold"
+                    android:background="@drawable/selector_radio_button"
+                    android:textColor="@drawable/selector_radio_text"
+                    android:textSize="16dp"
+                    android:text="전체" />
+
+                <RadioButton
+                    android:layout_width="77dp"
+                    android:layout_height="23dp"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:checked="false"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/pretendard_semibold"
+                    android:background="@drawable/selector_radio_button"
+                    android:textColor="@drawable/selector_radio_text"
+                    android:textSize="16dp"
+                    android:text="학교" />
+            </RadioGroup>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview_ranking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-
-
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

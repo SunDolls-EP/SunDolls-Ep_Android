@@ -6,48 +6,44 @@
 
         <variable
             name="novel"
-            type="com.narsha.sundolls_ep_android.ui.viewmodel.fragment.NovelViewModel" />
+            type="com.narsha.sundolls_ep_android.ui.viewmodel.fragment.UserViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background"
-        android:paddingStart="25dp"
-        android:paddingEnd="25dp"
-        android:paddingBottom="30dp">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/name"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@drawable/background_novel_layout"
-            android:orientation="vertical"
-            android:paddingBottom="30dp"
-            android:layout_marginTop="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="60dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/background_novel"
+            android:elevation="5dp"
+            android:fontFamily="@font/pretendard_medium"
+            android:hint="친구 이름을 입력해 주세요"
+            android:paddingStart="25dp"
+            android:textColor="#C0C0C0"
+            android:textSize="20dp" />
 
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@drawable/background_edittext_novel"
-                android:hint="친구찾기"
-                android:paddingStart="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_friend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/background_novel"
+            android:elevation="5dp"
+            android:paddingStart="30dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="30dp"
+            android:paddingBottom="15dp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview_novel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp" />
-        </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>
