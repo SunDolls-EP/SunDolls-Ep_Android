@@ -6,6 +6,6 @@ data class UserResponseDto(
     val profileUrl: String,
     val schoolName: String,
     val tag: String,
-    val totalStudyTime: Int,
+    val totalStudyTime: Long,
     val username: String
 )

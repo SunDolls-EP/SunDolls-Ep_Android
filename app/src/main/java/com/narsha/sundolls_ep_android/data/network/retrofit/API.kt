@@ -11,7 +11,6 @@ import com.narsha.sundolls_ep_android.data.network.dto.user.UserGetStudyRequestD
 import com.narsha.sundolls_ep_android.data.network.dto.user.UserResponseDto
 import com.narsha.sundolls_ep_android.data.network.dto.user.UserSetStudyRequestDto
 import com.narsha.sundolls_ep_android.data.network.dto.user.UserStudyInfoRequest
-import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -24,15 +23,11 @@ import retrofit2.http.Query
 
 interface API {
     //Auth-Controller
-    @GET("api/auth/login/oauth2/google")
-    fun googleLogin(
-        @Header("Authorization") googleIdToken: String
-    ): Call<LoginResponseDto>
-
-    @GET("api/auth/login/oauth2/kakao")
-    fun kakaoLogin(
-        @Header("Authorization") kakaoAccessToken: String,
-    ): Call<LoginResponseDto>
+    @GET("api/auth/login/oauth2/{provider}")
+    suspend fun login(
+        @Path("provider") provider: String,
+        @Header("Authorization") token: String
+    ): LoginResponseDto
 
     @GET("api/auth/login/refresh")
     suspend fun refreshToken(
@@ -114,5 +109,10 @@ interface API {
     suspend fun getUserFriendList(
         @Query("user") user: UserDto
     ): List<FriendResponseDto>
+
+    @GET("/api/user/self")
+    suspend fun getUserInformation(
+        @Header("Authorization") authorization: String
+    ): LoginResponseDto
 
 }
