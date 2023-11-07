@@ -7,13 +7,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ClientRetrofit {
     private const val baseURL = "http://dgswhs.gabia.io/"
 
-
-    val client = OkHttpClient.Builder()
+    private val client = OkHttpClient.Builder()
         .addInterceptor(HeaderInterceptor())
         .build()
 
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(baseURL)
+        .client(client)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
     val api: API = retrofit.create(API::class.java)
