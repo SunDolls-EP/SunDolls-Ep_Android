@@ -7,7 +7,7 @@
     <data>
         <variable
             name="Login"
-            type="com.narsha.sundolls_ep_android.ui.viewmodel.activity.LoginOAuthViewModel" />
+            type="com.narsha.sundolls_ep_android.ui.viewmodel.UserViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -7,7 +7,7 @@
 
         <variable
             name="menu"
-            type="com.narsha.sundolls_ep_android.ui.viewmodel.fragment.UserViewModel" />
+            type="com.narsha.sundolls_ep_android.ui.fragment.menu.MenuViewModel" />
     </data>
 
     <LinearLayout

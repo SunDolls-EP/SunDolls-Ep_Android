@@ -6,7 +6,7 @@
 
         <variable
             name="ranking"
-            type="com.narsha.sundolls_ep_android.ui.viewmodel.fragment.UserViewModel" />
+            type="com.narsha.sundolls_ep_android.ui.fragment.ranking.RankingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
