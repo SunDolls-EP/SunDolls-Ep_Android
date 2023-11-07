@@ -15,7 +15,11 @@
         android:id="@+id/menuFragment"
         android:name="com.narsha.sundolls_ep_android.ui.fragment.menu.MenuFragment"
         android:label="MenuFragment"
-        tools:layout="@layout/fragment_menu"/>
+        tools:layout="@layout/fragment_menu">
+        <action
+            android:id="@+id/action_menuFragment_to_fixUserFragment"
+            app:destination="@id/fixUserFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/novelFragment"
@@ -28,5 +32,10 @@
         android:name="com.narsha.sundolls_ep_android.ui.fragment.ranking.RankingFragment"
         android:label="RankingFragment"
         tools:layout="@layout/fragment_ranking"/>
+    <fragment
+        android:id="@+id/fixUserFragment"
+        android:name="com.narsha.sundolls_ep_android.ui.fragment.fix_user.FixUserFragment"
+        android:label="FixUserFragment"
+        tools:layout="@layout/fragment_fixuser"/>
 
 </navigation>

@@ -1,19 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
+
         <variable
             name="fixUser"
-            type="com.narsha.sundolls_ep_android.ui.viewmodel.fragment.UserViewModel" />
+            type="com.narsha.sundolls_ep_android.ui.viewmodel.UserViewModel" />
     </data>
+
     <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#F3F4F6"
         android:orientation="vertical">
+
         <ImageView
+            android:id="@+id/image_profile"
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="30dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:paddingBottom="50dp"
+            android:background="@drawable/background_novel"
+            android:orientation="vertical"
+            android:paddingStart="30dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/pretendard_semibold"
+                android:text="회원 정보"
+                android:textColor="@color/black"
+                android:textSize="22dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendard_medium"
+                android:text="이름"
+                android:textColor="#B3B3B3"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@null"
+                android:maxLines="1"
+                android:fontFamily="@font/pretendard_medium"
+                android:hint="이름"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#B3B3B3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/pretendard_medium"
+                android:text="학교"
+                android:textColor="#B3B3B3"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/school"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@null"
+                android:maxLines="1"
+                android:fontFamily="@font/pretendard_medium"
+                android:hint="학교"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#B3B3B3" />
+
+        </LinearLayout>
+        
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_save"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginTop="50dp"
+            android:text="저장"
+            android:elevation="5dp"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:fontFamily="@font/pretendard_semibold"
+            android:background="@drawable/background_fixuser_button"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>
