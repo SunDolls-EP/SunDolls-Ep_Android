@@ -3,6 +3,7 @@ package com.narsha.sundolls_ep_android.ui.fragment.home
 import android.content.Intent
 import android.util.Log
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -10,19 +11,22 @@ import com.bumptech.glide.request.RequestOptions
 import com.narsha.sundolls_ep_android.R
 import com.narsha.sundolls_ep_android.base.BaseFragment
 import com.narsha.sundolls_ep_android.databinding.FragmentHomeBinding
-import com.narsha.sundolls_ep_android.ui.viewmodel.fragment.UserViewModel
+import com.narsha.sundolls_ep_android.ui.viewmodel.UserViewModel
+import com.narsha.sundolls_ep_android.utils.App
 
-class HomeFragment : BaseFragment<FragmentHomeBinding, UserViewModel>(R.layout.fragment_home) {
-    override val viewModel: UserViewModel by viewModels()
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fragment_home) {
+    override val viewModel: HomeViewModel by viewModels()
+    val userViewModel: UserViewModel by activityViewModels()
 
     override fun start() {
-        with(viewModel){
+        getUserInfromation()
+        with(userViewModel){
             with(binding){
+                Log.d("UserInformation",userViewModel.userData.value.toString())
                 schoolRankData.observe(this@HomeFragment){
-                    nameSchool1.text = it[0].name
+//                    nameSchool1.text = it[0].name
 //                    nameSchool2.text = it[1].name
 //                    nameSchool3.text = it[2].name
-                    Log.d("학교",it.toString())
                 }
 
                 personalRankData.observe(this@HomeFragment){
@@ -33,16 +37,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, UserViewModel>(R.layout.f
                     Glide.with(this@HomeFragment).load(it[0].profileUrl)
                         .error(AppCompatResources.getDrawable(requireContext(), R.drawable.background_imageview_profile))
                         .apply(RequestOptions.bitmapTransform(RoundedCorners(100)))
-                        .into(binding.imageSchool1)
+                        .into(binding.imagePersonal1)
                     Glide.with(this@HomeFragment).load(it[1].profileUrl)
                         .error(AppCompatResources.getDrawable(requireContext(), R.drawable.background_imageview_profile))
                         .apply(RequestOptions.bitmapTransform(RoundedCorners(100)))
-                        .into(binding.imageSchool2)
+                        .into(binding.imagePersonal2)
                     Glide.with(this@HomeFragment).load(it[2].profileUrl)
                         .error(AppCompatResources.getDrawable(requireContext(), R.drawable.background_imageview_profile))
                         .apply(RequestOptions.bitmapTransform(RoundedCorners(100)))
-                        .into(binding.imageSchool3)
-                    Log.d("사람",it.toString())
+                        .into(binding.imagePersonal3)
                 }
             }
         }
@@ -51,11 +54,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, UserViewModel>(R.layout.f
     }
 
     private fun getSchoolRanking() {
-        viewModel.getSchoolRanking(1)
+        userViewModel.getSchoolRanking(1)
     }
 
     private fun getAllPersonalRanking() {
-        viewModel.getAllPersonalRanking(3)
+        userViewModel.getAllPersonalRanking(3)
     }
 
     private fun setImg(){
@@ -91,5 +94,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, UserViewModel>(R.layout.f
         Intent(context, TimerService::class.java).also { intent ->
             activity?.stopService(intent)
         }
+    }
+
+    private fun getUserInfromation(){
+        userViewModel.getUserInformation(App.prefs.accessToken)
     }
 }
