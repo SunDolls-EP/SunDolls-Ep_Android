@@ -37,6 +37,7 @@ interface API {
     //Rank-Controller
     @GET("api/rank")
     suspend fun getAllPersonalRanking(
+        @Header("Authorization") token: String,
         @Query("limit") limit: Int
     ): List<PeopleRankResponseDto>
 
@@ -91,17 +92,20 @@ interface API {
 
     @GET("api/user/{username}")
     suspend fun findUser(
+        @Header("Authorization") authorization: String,
         @Path("username") username: String
     ): List<UserResponseDto>
 
     @GET("api/user/{username}/{tag}")
     suspend fun findUser(
+        @Header("Authorization") authorization: String,
         @Path("username") username: String,
         @Path("tag") tag: String
     ): UserResponseDto
 
     @GET("api/user/random/list")
     suspend fun getRandomUserList(
+        @Header("Authorization") authorization: String,
         @Query("limit") limit: Int
     ): List<UserResponseDto>
 
