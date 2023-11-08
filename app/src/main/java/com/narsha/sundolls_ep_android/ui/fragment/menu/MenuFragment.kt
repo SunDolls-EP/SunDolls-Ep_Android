@@ -22,17 +22,25 @@ class MenuFragment : BaseFragment<FragmentMenuBinding, MenuViewModel>(
     override val viewModel: MenuViewModel by viewModels()
     val userViewModel: UserViewModel by activityViewModels()
     override fun start() {
-        val userData = userViewModel.userData.value
+        val userData = userViewModel.userData.value!!
 
         with(binding) {
-            name.text = userData?.username?:""
-            school.text = userData?.schoolName?:""
-
+            name.text = userData.username
+            school.text = userData.schoolName
+            time.text = if (userData.totalStudyTime == 0L) {
+                "공부한 시간이 없습니다"
+            } else if ((userData.totalStudyTime) < 60) {
+                userData.totalStudyTime.toString() + "초"
+            } else if ((userData.totalStudyTime) < 3600) {
+                ((userData.totalStudyTime/60)).toString() + "분"
+            } else {
+                ((userData.totalStudyTime/3600)).toString() + "시간"
+            }
             buttonLogout.setOnClickListener { logout() }
             buttonAccountFix.setOnClickListener { goFixUserFragment() }
         }
 
-        Glide.with(this).load(userData?.profileUrl?:"")
+        Glide.with(this).load(userData.profileUrl)
             .error(
                 AppCompatResources.getDrawable(
                     requireContext(),

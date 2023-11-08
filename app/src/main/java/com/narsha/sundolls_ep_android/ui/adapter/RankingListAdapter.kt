@@ -10,9 +10,11 @@ import com.narsha.sundolls_ep_android.ui.adapter.data.RankingData
 
 class RankingListAdapter: BaseListAdapter<RankingData, ItemRankingBinding>(R.layout.item_ranking) {
     override fun action(data: RankingData, binding: ItemRankingBinding) {
-        binding.name.text = data.name
-        binding.time.text = data.time
-        binding.ranking.text = data.ranking
+        with(binding){
+            name.text = data.name
+            time.text = data.time
+            ranking.text = data.ranking
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
