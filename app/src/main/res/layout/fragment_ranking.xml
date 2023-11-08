@@ -26,13 +26,13 @@
             app:layout_constraintTop_toTopOf="@+id/linearLayout2">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/image2"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:src="@drawable/background_imageview_profile" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="황주완"
@@ -52,7 +52,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/image1"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:src="@drawable/background_imageview_profile"
@@ -60,7 +60,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="최시훈"
@@ -83,7 +83,7 @@
             app:layout_constraintTop_toTopOf="@+id/linearLayout2">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/image3"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:src="@drawable/background_imageview_profile"
@@ -92,6 +92,7 @@
                 app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
             <TextView
+                android:id="@+id/text3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="이혜성"
