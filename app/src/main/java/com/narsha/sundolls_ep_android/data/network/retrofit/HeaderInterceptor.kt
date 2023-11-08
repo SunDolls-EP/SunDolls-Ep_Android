@@ -7,11 +7,14 @@ import okhttp3.Response
 
 class HeaderInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response = with(chain) {
-        val original = request()
-        if (original.header("Authorization") != null) {
-            App.prefs.accessToken = original.header("Authorization").toString()
-            Log.d("헤더", App.prefs.accessToken)
+        val original = chain.request()
+        val response = chain.proceed(original)
+        if (response.header("Authorization") != null) {
+            App.prefs.accessToken = response.header("Authorization").toString()
         }
-        return proceed(original)
+//        request().newBuilder()
+//            .addHeader("Authorization", App.prefs.accessToken)
+//            .build()
+        response
     }
 }
