@@ -11,6 +11,7 @@ import com.narsha.sundolls_ep_android.data.network.dto.rank.SchoolRankResponseDt
 import com.narsha.sundolls_ep_android.data.network.dto.user.UserFixInformationRequestDto
 import com.narsha.sundolls_ep_android.data.network.dto.user.UserResponseDto
 import com.narsha.sundolls_ep_android.data.network.retrofit.ClientRetrofit.api
+import com.narsha.sundolls_ep_android.utils.App
 import kotlinx.coroutines.launch
 
 class UserViewModel : BaseViewModel() {
@@ -29,6 +30,8 @@ class UserViewModel : BaseViewModel() {
     private val _userData = MutableLiveData<LoginResponseDto>()
     val userData: LiveData<LoginResponseDto> = _userData
 
+    private val _userRanking = MutableLiveData<List<PeopleRankResponseDto>>()
+    val userRanking: LiveData<List<PeopleRankResponseDto>> = _userRanking
     //    private val _
     fun getSchoolRanking(limit: Int) = viewModelScope.launch {
         kotlin.runCatching {
@@ -41,9 +44,9 @@ class UserViewModel : BaseViewModel() {
         }
     }
 
-    fun getAllPersonalRanking(limit: Int) = viewModelScope.launch {
+    fun getAllPersonalRanking(limit: Int, token: String) = viewModelScope.launch {
         kotlin.runCatching {
-            api.getAllPersonalRanking(limit)
+            api.getAllPersonalRanking(token, limit)
         }.onSuccess {
             _personalRankData.value = it
             Log.d("getAllPersonalRanking - 성공", it.toString())
@@ -55,7 +58,7 @@ class UserViewModel : BaseViewModel() {
     fun findUser(username: String, tag: String) = viewModelScope.launch {
         if (tag == "") {
             kotlin.runCatching {
-                api.findUser(username)
+                api.findUser(username = username, authorization = App.prefs.accessToken)
             }.onSuccess {
                 _friendDataList.value = it
                 Log.d("findUser - 성공", it.toString())
@@ -64,7 +67,7 @@ class UserViewModel : BaseViewModel() {
             }
         } else {
             kotlin.runCatching {
-                api.findUser(username, tag)
+                api.findUser(username = username, tag = tag, authorization = App.prefs.accessToken)
             }.onSuccess {
                 _friendData.value = it
                 Log.d("findUser - 성공", it.toString())
@@ -96,14 +99,34 @@ class UserViewModel : BaseViewModel() {
         }
     }
 
-    fun fixUser(userFixInformationRequestDto: UserFixInformationRequestDto) = viewModelScope.launch {
+    fun fixUser(userFixInformationRequestDto: UserFixInformationRequestDto) =
+        viewModelScope.launch {
+            kotlin.runCatching {
+                api.fixUserInformation(userFixInformationRequestDto)
+            }.onSuccess {
+                _userData.value = LoginResponseDto(
+                    it.username,
+                    it.tag,
+                    it.schoolName,
+                    it.totalStudyTime,
+                    it.profileUrl,
+                    it.createdAt,
+                    it.modifiedAt
+                )
+                Log.d("fixUser - 성공", it.toString())
+            }.onFailure { e ->
+                Log.d("fixUser - 애러", e.message.toString())
+            }
+        }
+
+    fun getUserRandom(limit: Int) = viewModelScope.launch {
         kotlin.runCatching {
-            api.fixUserInformation(userFixInformationRequestDto)
+            api.getRandomUserList(limit = limit, authorization = App.prefs.accessToken)
         }.onSuccess {
-            _userData.value = LoginResponseDto(it.username, it.tag, it.schoolName, it.totalStudyTime, it.profileUrl, it.createdAt, it.modifiedAt)
-            Log.d("fixUser - 성공", it.toString())
+            _friendDataList.value = it
+            Log.d("getUserRandom - 성공", it.toString())
         }.onFailure { e ->
-            Log.d("fixUser - 애러", e.message.toString())
+            Log.d("getUserRandom - 애러", e.message.toString())
         }
     }
 }
